@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JANA - A World Created For Your Birthday</title>
+    <style>
+        body { margin: 0; overflow: hidden; background-color: #0b0510; color: #fff; font-family: 'Georgia', serif; }
+        #canvas-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
+        #ui-layer { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 10; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; pointer-events: none; }
+        .scene { display: none; flex-direction: column; align-items: center; justify-content: center; width: 100%; height: 100%; padding: 20px; box-sizing: border-box; }
+        .active { display: flex; animation: fadeIn 2s ease-in-out; }
+        h1 { font-size: 2.5rem; color: #f4d0c4; text-shadow: 0 0 15px rgba(244, 208, 196, 0.6); font-weight: 300; margin-bottom: 20px; }
+        p { font-size: 1.2rem; line-height: 1.6; max-width: 600px; color: #e8e8e8; margin-bottom: 15px; }
+        button { pointer-events: auto; margin-top: 30px; padding: 15px 40px; background: linear-gradient(45deg, #d4af37, #f3e5ab); border: none; border-radius: 30px; color: #1a1a1a; font-size: 1.1rem; font-weight: bold; cursor: pointer; transition: transform 0.3s, box-shadow 0.3s; box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4); }
+        button:hover { transform: scale(1.05); box-shadow: 0 6px 20px rgba(212, 175, 55, 0.6); }
+        
+        /* Envelope Styling */
+        .envelope-container { position: relative; width: 320px; height: 220px; margin-top: -50px; pointer-events: auto; cursor: pointer; }
+        .envelope { width: 100%; height: 100%; background: #fdf5e6; position: absolute; box-shadow: 0 15px 40px rgba(0,0,0,0.6); z-index: 2; border-radius: 5px; }
+        .flap { position: absolute; top: 0; left: 0; width: 0; height: 0; border-left: 160px solid transparent; border-right: 160px solid transparent; border-top: 120px solid #eaddc5; transform-origin: top; transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1); z-index: 4; }
+        .seal { position: absolute; top: 100px; left: 140px; width: 40px; height: 40px; background: #d4af37; border-radius: 50%; box-shadow: 0 2px 8px rgba(0,0,0,0.4); z-index: 5; transition: opacity 0.5s; display: flex; justify-content: center; align-items: center; color: #fff; font-size: 1.2rem; font-style: italic; }
+        .seal::after { content: 'R'; }
+        .letter { position: absolute; top: 10px; left: 10px; width: 300px; height: 200px; background: #fff; z-index: 1; transition: transform 1.5s cubic-bezier(0.4, 0, 0.2, 1); padding: 25px; box-sizing: border-box; color: #333; font-family: 'Cursive', 'Brush Script MT', serif; font-size: 1.1rem; text-align: left; opacity: 0; border-radius: 3px; box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+        .envelope-front { position: absolute; bottom: 0; left: 0; width: 0; height: 0; border-left: 160px solid #f4e8d3; border-right: 160px solid #f4e8d3; border-bottom: 110px solid #fdf5e6; z-index: 3; }
+        
+        .envelope-container.open .flap { transform: rotateX(180deg); z-index: 1; }
+        .envelope-container.open .seal { opacity: 0; }
+        .envelope-container.open .letter { transform: translateY(-160px); opacity: 1; z-index: 5; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        
+        #particles-js { position: absolute; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
+    </style>
+    <!-- External Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+</head>
+<body>
+    <div id="particles-js"></div>
+    <div id="canvas-container"></div>
+    
+    <div id="ui-layer">
+        <!-- Chapter 1: The Envelope -->
+        <div id="scene1" class="scene active">
+            <h1 style="font-size: 1.5rem; margin-bottom: 60px;">To My Beautiful Jana</h1>
+            <div class="envelope-container" onclick="openEnvelope()">
+                <div class="envelope"></div>
+                <div class="envelope-front"></div>
+                <div class="flap"></div>
+                <div class="seal"></div>
+                <div class="letter">
+                    Dear Jana,<br><br>
+                    Somewhere between India and Egypt, there is a heart that has a thousand things to tell you.<br><br>
+                    Today isn't an ordinary day...<br><br>
+                    With love,<br>Raj.
+                </div>
+            </div>
+            <p style="margin-top: 50px; font-size: 0.9rem; opacity: 0.7;">Tap to Open Your Letter</p>
+            <button id="btn-scene1" style="display:none; margin-top: 20px;" onclick="nextScene(2)">Begin Our Journey</button>
+        </div>
+
+        <!-- Chapter 2: The Map -->
+        <div id="scene2" class="scene">
+            <h1>Two countries.<br>Two different skies.<br>One beautiful connection.</h1>
+            <p>Thousands of kilometres may separate us, but today, my wishes are travelling all the way from India to you.</p>
+            <button onclick="nextScene(3)">Continue</button>
+        </div>
+
+        <!-- Chapter 3: The Robots -->
+        <div id="scene3" class="scene">
+            <h1 style="color: #fff; font-size: 3rem; text-shadow: 0 0 20px #fff;">WAIT! STOP!</h1>
+            <p style="font-size: 1.5rem; color: #e6a8d7; font-style: italic;">"Do you two seriously remember what today is?!"</p>
+            <p style="font-size: 2.2rem; font-weight: bold; color: #f4d0c4; margin-top: 20px;">IT'S JANA'S BIRTHDAY!!!</p>
+            <button onclick="nextScene(4)">See the Magic</button>
+        </div>
+
+        <!-- Chapter 4: Magical Text Explosion -->
+        <div id="scene4" class="scene">
+            <h1 style="font-size: 3rem;">HAPPY BIRTHDAY, JANA!</h1>
+            <p class="fade-text">YOU ARE SOMEONE'S FAVOURITE PERSON.</p>
+            <p class="fade-text">MAY YOUR SMILE NEVER LOSE ITS MAGIC.</p>
+            <p class="fade-text" style="font-size: 1.5rem; color: #f4d0c4; margin-top: 30px;">THE WORLD BECAME A LITTLE MORE BEAUTIFUL THE DAY YOU WERE BORN.</p>
+            <button onclick="nextScene(5)" style="margin-top: 40px;">Continue...</button>
+        </div>
+        
+        <!-- Chapter 5: Finale -->
+        <div id="scene5" class="scene">
+            <h1 style="font-size: 2rem;">Happy Birthday, My Sweetheart,<br>My Beautiful Jana.</h1>
+            <p>I hope this little world I created makes you feel as special as you truly are.</p>
+            <p>No matter how far India is from Egypt, today my heart is sending you its warmest wishes.</p>
+            <p style="margin-top: 20px; font-style: italic;">Keep shining, my sweetheart.<br>With all my love,<br>Raj.</p>
+            <p style="font-size: 0.9rem; color: #d4af37; letter-spacing: 2px; margin-top: 30px;">FOREVER A SPECIAL DAY — NOVEMBER 21</p>
+            <button onclick="nextScene(1)">Experience Again ♡</button>
+        </div>
+    </div>
+
+    <script>
+        let isEnvelopeOpen = false;
+        function openEnvelope() {
+            if (isEnvelopeOpen) return;
+            isEnvelopeOpen = true;
+            document.querySelector('.envelope-container').classList.add('open');
+            setTimeout(() => {
+                document.getElementById('btn-scene1').style.display = 'block';
+                gsap.from('#btn-scene1', {opacity: 0, y: 20, duration: 1});
+            }, 1500);
+        }
+
+        function nextScene(sceneNumber) {
+            document.querySelectorAll('.scene').forEach(s => s.classList.remove('active'));
+            document.getElementById('scene' + sceneNumber).classList.add('active');
+            
+            // Re-trigger animations for scene 4 text
+            if(sceneNumber === 4) {
+                gsap.from('.fade-text', {opacity: 0, y: 30, duration: 1.5, stagger: 1.5});
+                initParticles();
+            } else if (sceneNumber === 2) {
+                initGlobe();
+                if(window.pJSDom && window.pJSDom.length > 0) {
+                    window.pJSDom[0].pJS.fn.vendors.destroypJS();
+                    window.pJSDom = [];
+                }
+            } else {
+                // Clear particles if not in scene 4
+                if(window.pJSDom && window.pJSDom.length > 0) {
+                    window.pJSDom[0].pJS.fn.vendors.destroypJS();
+                    window.pJSDom = [];
+                }
+            }
+        }
+
+        // --- Three.js Background & Globe ---
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.getElementById('canvas-container').appendChild(renderer.domElement);
+
+        // Starfield
+        const starsGeometry = new THREE.BufferGeometry();
+        const starsMaterial = new THREE.PointsMaterial({color: 0xFFFFFF, size: 0.1, transparent: true, opacity: 0.8});
+        const starsVertices = [];
+        for(let i=0; i<1500; i++) {
+            starsVertices.push((Math.random() - 0.5) * 2000, (Math.random() - 0.5) * 2000, -Math.random() * 2000);
+        }
+        starsGeometry.setAttribute('position', new THREE.Float32BufferAttribute(starsVertices, 3));
+        const starField = new THREE.Points(starsGeometry, starsMaterial);
+        scene.add(starField);
+
+        let globe;
+        function initGlobe() {
+            if(globe) return;
+            const geometry = new THREE.SphereGeometry(2.5, 64, 64);
+            // Wireframe luxury aesthetic
+            const material = new THREE.MeshBasicMaterial({ color: 0xd4af37, wireframe: true, transparent: true, opacity: 0.3 });
+            globe = new THREE.Mesh(geometry, material);
+            scene.add(globe);
+            camera.position.z = 6;
+            
+            // Add slight initial rotation
+            globe.rotation.x = 0.2;
+            globe.rotation.y = -1.5;
+        }
+
+        // --- Particles.js for Magical Text Explosion ---
+        function initParticles() {
+            particlesJS('particles-js', {
+              "particles": {
+                "number": { "value": 150 },
+                "color": { "value": ["#ffd700", "#ffb7c5", "#ffffff", "#e6a8d7"] },
+                "shape": { "type": "circle" },
+                "opacity": { "value": 0.8, "random": true, "anim": {"enable": true, "speed": 1, "opacity_min": 0.1, "sync": false} },
+                "size": { "value": 5, "random": true },
+                "line_linked": { "enable": false },
+                "move": { "enable": true, "speed": 3, "direction": "top", "random": true, "straight": false, "out_mode": "out" }
+              },
+              "interactivity": { "events": { "onhover": { "enable": true, "mode": "bubble" } } },
+              "retina_detect": true
+            });
+        }
+
+        // Animation Loop
+        function animate() {
+            requestAnimationFrame(animate);
+            if(globe) {
+                globe.rotation.y += 0.003;
+            }
+            starField.rotation.y += 0.0005;
+            renderer.render(scene, camera);
+        }
+        animate();
+
+        // Responsive
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+    </script>
+</body>
+</html>
