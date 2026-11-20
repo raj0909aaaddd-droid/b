@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f8c8dc"><title>For Jana ♡</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,700;1,500&family=Poppins:wght@300;400;500&family=Dancing+Script:wght@500;700&family=Great+Vibes&family=Parisienne&family=Italiana&family=Pinyon+Script&display=swap" rel="stylesheet">
+<script>function miss(im){var d=document.createElement('div');d.className='miss';d.innerHTML='Add <b>hand.jpg</b> next to index.html.<br><br><label class="btn" style="display:inline-block;margin:0">Choose photo<input type="file" accept="image/*" hidden></label>';im.replaceWith(d);d.querySelector('input').onchange=function(e){var f=e.target.files[0];if(!f)return;var n=document.createElement('img');n.src=URL.createObjectURL(f);n.style.cssText='display:block;width:100%;height:auto';d.replaceWith(n)};d.querySelector('label').onclick=function(e){e.stopPropagation()}}</script>
+<style>
+:root{--bp:#fadde8;--p:#f3a6c4;--cr:#fff8f0;--g:#c9a24f;--rg:#e8a598;--lv:#dccdf2;--ink:#6b3a4f;--serif:'Cormorant Garamond',Georgia,serif;--sans:'Poppins',system-ui,sans-serif;--hand:'Dancing Script','Segoe Script',cursive}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;overflow:hidden;background:var(--bp);color:var(--ink);font-family:var(--sans);overscroll-behavior:none}
+button{font:inherit;cursor:pointer;border:0;color:inherit}
+.sc{position:fixed;inset:0;display:none;flex-direction:column;align-items:center;overflow-y:auto;overflow-x:hidden;padding:24px 18px 84px;z-index:2;background:linear-gradient(160deg,var(--cr),var(--bp) 55%,var(--lv))}
+.sc.on{display:flex;animation:fin .8s ease}
+@keyframes fin{from{opacity:0;transform:scale(1.03)}}
+h1,h2{font-family:var(--serif);font-weight:700;text-align:center;line-height:1.05}
+h2{font-size:clamp(30px,9vw,44px);margin:6px 0 10px}
+.hand{font-family:var(--hand);font-size:22px}
+.btn{background:linear-gradient(135deg,var(--p),var(--rg));color:#fff;padding:14px 26px;border-radius:40px;font-weight:500;letter-spacing:.06em;font-size:13px;box-shadow:0 8px 24px #e8789f66,inset 0 0 0 1px #fff8;margin:18px auto 0;display:block;transition:transform .2s}
+.btn:active{transform:scale(.95)}
+.glass{background:#ffffff88;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid #fff;border-radius:22px;box-shadow:0 10px 30px #d98aa933}
+#fx{position:fixed;inset:0;pointer-events:none;z-index:1;overflow:hidden}
+#fx span{position:absolute;bottom:-30px;animation:up linear forwards}
+@keyframes up{to{transform:translate(var(--dx),-110vh) rotate(var(--r));opacity:.2}}
+canvas#cv{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:40}
+#load{position:fixed;inset:0;z-index:99;background:var(--bp);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;transition:opacity .6s}
+#load b{font-size:44px;animation:bt 1s infinite alternate}@keyframes bt{to{transform:scale(1.2)}}
+/* player */
+#pl{position:fixed;left:50%;transform:translateX(-50%);bottom:14px;z-index:60;display:flex;align-items:center;gap:8px;padding:6px 10px;border-radius:30px;font-size:12px;max-width:94vw}
+#pl button{background:#fff;border-radius:50%;width:32px;height:32px;box-shadow:0 2px 8px #d98aa944}
+#pl input{width:90px;accent-color:#e87aa5}
+.eq{display:flex;gap:2px;align-items:flex-end;height:16px}.eq i{width:3px;background:var(--p);height:4px;border-radius:2px}
+.play .eq i{animation:eq .6s infinite alternate}.eq i:nth-child(2){animation-delay:.2s}.eq i:nth-child(3){animation-delay:.4s}
+@keyframes eq{to{height:16px}}
+#msg{font-size:11px;opacity:.7}
+/* S0 */
+#s0{justify-content:center;text-align:center}
+.ring{width:128px;height:128px;border-radius:50%;padding:5px;background:conic-gradient(var(--p),var(--g),var(--lv),var(--p));animation:spin 6s linear infinite;box-shadow:0 0 24px #f3a6c4aa;margin:0 auto}
+.ring>div{width:100%;height:100%;border-radius:50%;background:var(--cr);border:4px solid var(--cr);overflow:hidden;animation:spin 6s linear infinite reverse}
+@keyframes spin{to{transform:rotate(360deg)}}
+.hl{display:flex;gap:16px;justify-content:center;margin:14px 0}
+.hl div{width:48px;height:48px;border-radius:50%;border:2px solid var(--p);display:grid;place-items:center;font-size:20px;background:#fff9;box-shadow:0 0 0 3px #fff}
+.note{position:fixed;top:12px;left:50%;transform:translate(-50%,-120px);z-index:30;padding:10px 16px;font-size:12px;animation:drop 6s 1s forwards;width:min(92vw,360px)}
+@keyframes drop{10%,85%{transform:translate(-50%,0)}to{transform:translate(-50%,-120px)}}
+#s0 h1{font-size:clamp(34px,11vw,52px);margin-top:8px}
+#s0.burst .ring{animation:spin .8s linear infinite;transform:scale(1.5);box-shadow:0 0 70px 20px #f3a6c4;transition:.8s}
+#s0.burst>*:not(.pf){opacity:.3;transition:.8s}
+/* stories */
+#s1{padding:0;display:none}
+#s1.on{display:block;overflow:hidden}
+.bars{position:absolute;top:calc(10px + env(safe-area-inset-top));left:10px;right:10px;display:flex;gap:4px;z-index:5}
+.bars i{flex:1;height:3px;background:#fff9;border-radius:3px;overflow:hidden}.bars i b{display:block;height:100%;width:0;background:#fff}
+.bars i.d b{width:100%}.bars i.a b{animation:fill 5s linear forwards}@keyframes fill{to{width:100%}}
+.who{position:absolute;top:30px;left:14px;z-index:5;color:#fff;font-size:13px;display:flex;gap:8px;align-items:center;text-shadow:0 1px 4px #0003}
+.tap{position:absolute;inset:0;z-index:3;display:flex}.tap div:first-child{width:35%}.tap div:last-child{flex:1}
+.st{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:30px;text-align:center;color:#fff;transition:background .6s}
+.st .stk{font-size:84px;filter:drop-shadow(0 8px 14px #0003);animation:fl 3s ease-in-out infinite}
+@keyframes fl{50%{transform:translateY(-14px) rotate(6deg)}}
+.st h2{color:#fff;font-size:clamp(28px,8.5vw,40px);text-shadow:0 2px 14px #b0457a77;margin-top:20px;animation:fin .8s}
+.st small{position:absolute;bottom:40px;font-family:var(--hand);font-size:22px;opacity:.9}
+#s1 .btn{position:absolute;bottom:90px;left:50%;transform:translateX(-50%);z-index:6}
+/* scrapbook */
+.pol{background:#fff;padding:10px 10px 38px;box-shadow:0 12px 26px #b0457a40;position:relative;width:min(70vw,250px);transition:transform .4s;margin:20px auto}
+.pol .ph{aspect-ratio:1;display:grid;place-items:center;font-size:70px;background:linear-gradient(135deg,var(--bp),var(--lv))}
+.pol .cap{font-family:var(--hand);font-size:20px;text-align:center;position:absolute;bottom:6px;left:0;right:0}
+.pol::before{content:"";position:absolute;top:-12px;left:50%;width:80px;height:24px;margin-left:-40px;background:#f3a6c4aa;transform:rotate(-4deg)}
+.pol:nth-of-type(odd){transform:rotate(-3deg)}.pol:nth-of-type(even){transform:rotate(3deg)}.pol:active{transform:scale(1.05) rotate(0)}
+.map{width:100%;max-width:380px;padding:10px;margin:10px 0}
+.q{font-family:var(--serif);font-style:italic;font-size:19px;text-align:center;max-width:320px;margin:6px 0}
+.pearls{height:12px;background:radial-gradient(circle at 6px 6px,#fff,#f3e3e8 55%,#d9b9c4) 0 0/14px 12px repeat-x}
+.feat{position:relative;width:min(84vw,330px);margin:26px auto;background:#fff;padding:12px 12px 52px;box-shadow:0 20px 50px #b0457a55,0 0 60px #fff8 inset;border-radius:4px;transform:rotate(-2deg)}
+.feat img{display:block;width:100%;height:auto}
+.feat .cap{position:absolute;bottom:6px;left:10px;right:10px;font-family:var(--hand);font-size:16px;text-align:center;line-height:1.1}
+.feat .bw{position:absolute;font-size:36px;filter:drop-shadow(0 3px 4px #0003)}
+.rv{position:absolute;inset:12px 12px 52px;background:#f7a9c9ee;display:grid;place-items:center;text-align:center;padding:16px;color:#fff;font-family:var(--hand);font-size:25px;opacity:0;pointer-events:none;transition:opacity .7s}
+.feat.show .rv{opacity:1}
+.miss{padding:30px 10px;text-align:center;font-size:13px;background:var(--bp)}
+/* magazine */
+#s3{padding:0}
+.mag{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;height:100%;width:100%;scrollbar-width:none}.mag::-webkit-scrollbar{display:none}
+.pg{flex:0 0 100%;scroll-snap-align:center;overflow-y:auto;padding:34px 24px 90px;background:var(--cr)}
+.pg h3{font-family:var(--serif);font-size:30px;line-height:1.05;margin:4px 0 14px;border-bottom:1px solid var(--g);padding-bottom:10px}
+.pg p{font-family:var(--serif);font-size:19px;line-height:1.5;margin-bottom:12px}
+.pg .k{font-size:11px;letter-spacing:.2em;color:var(--g)}
+.cover{background:linear-gradient(170deg,#fff,var(--bp));text-align:center;display:flex;flex-direction:column;justify-content:center;align-items:center}
+.cover h1{font-size:25vw;letter-spacing:-.02em;color:var(--ink);margin:10px 0}
+.cover .sub{font-size:12px;letter-spacing:.2em;max-width:260px;line-height:1.7}
+.hint{font-size:12px;margin-top:30px;opacity:.7;animation:fl 2s infinite}
+ol.r{padding-left:30px;font-family:var(--serif);font-size:18px;line-height:1.35}ol.r li{margin-bottom:8px;padding-left:4px}
+ol.r li::marker{color:var(--g);font-weight:700}
+.mg-ar{position:fixed;top:50%;z-index:50;width:36px;height:36px;border-radius:50%;background:#fffc;box-shadow:0 2px 10px #0002}
+/* gift */
+#s4,#s5,#s6{justify-content:center;text-align:center}
+.gift{position:relative;width:190px;height:190px;margin:26px auto;cursor:pointer}
+.bx{position:absolute;bottom:0;left:10px;right:10px;height:120px;background:linear-gradient(135deg,#f9c1d9,#ee8fb5);border-radius:6px;box-shadow:0 20px 30px #b0457a55}
+.lid{position:absolute;left:0;right:0;bottom:104px;height:46px;background:linear-gradient(135deg,#fbd0e2,#f09bbf);border-radius:6px;transition:transform 1.2s cubic-bezier(.3,1.4,.5,1);box-shadow:0 8px 12px #0003}
+.rb{position:absolute;background:linear-gradient(90deg,#b88a2e,#f3dc94,#b88a2e);transition:transform 1.4s,opacity 1.4s;z-index:2}
+.rv1{left:calc(50% - 14px);width:28px;bottom:0;height:150px}.rh{left:10px;right:10px;bottom:48px;height:24px}
+.bow{position:absolute;top:2px;left:50%;margin-left:-40px;width:80px;z-index:3;font-size:64px;line-height:1;transition:transform 1.3s,opacity 1s;animation:wig 2s infinite}
+@keyframes wig{50%{transform:rotate(6deg) scale(1.06)}}
+.gift.open .rb{transform:scaleX(.1) translateY(-30px);opacity:0}.gift.open .rv1{transform:scaleX(.1);opacity:0}
+.gift.open .lid{transform:translate(70px,-110px) rotate(28deg)}.gift.open .bow{transform:translate(80px,-100px) rotate(30deg);animation:none;opacity:0}
+.gift.open .bx{filter:brightness(1.1)}
+.rev{opacity:0;transform:translateY(20px);transition:all 1s;max-width:330px}.rev.show{opacity:1;transform:none}
+.rev h2{font-size:clamp(22px,6.6vw,30px);line-height:1.2}
+.sm{font-size:56px;display:inline-block;animation:wig 1.5s infinite;cursor:pointer}
+/* cake */
+.cake{width:min(80vw,300px);margin:0 auto;cursor:pointer;filter:drop-shadow(0 14px 14px #b0457a44)}
+.fl{transform-origin:center bottom;animation:flk .3s infinite alternate}@keyframes flk{to{transform:scale(1.15,.9) rotate(4deg)}}
+.off .fl{display:none}
+/* letter */
+.env{position:relative;width:min(84vw,320px);height:210px;margin:20px auto;cursor:pointer;perspective:800px;transition:transform .8s}
+.env .back{position:absolute;inset:0;background:#f4a5c3;border-radius:8px;box-shadow:0 20px 40px #b0457a55}
+.env .front{position:absolute;inset:0;background:linear-gradient(135deg,#f9c9dc,#f4a5c3);clip-path:polygon(0 0,50% 55%,100% 0,100% 100%,0 100%);border-radius:8px}
+.env .flap{position:absolute;top:0;left:0;right:0;height:60%;background:#ee8fb5;clip-path:polygon(0 0,100% 0,50% 100%);transform-origin:top;transition:transform .8s;z-index:3}
+.env .seal{position:absolute;top:44%;left:50%;margin:-20px;font-size:34px;z-index:4;transition:opacity .4s}
+.env.open .flap{transform:rotateX(180deg);z-index:0}.env.open .seal{opacity:0}.env.open{transform:translateY(30px)}
+#lt{position:fixed;inset:0;z-index:30;display:none;background:#f9c9dcdd;overflow-y:auto;padding:30px 16px 90px}
+#lt.on{display:block}
+.paper{max-width:420px;margin:0 auto;background:#fffdf7 repeating-linear-gradient(transparent 0 33px,#f3d4de 33px 34px);padding:30px 24px;border-radius:4px;box-shadow:0 20px 50px #b0457a55;transform-origin:top;animation:unf 1.4s ease both;font-family:var(--hand);font-size:23px;line-height:34px;color:#5a2d42;position:relative}
+@keyframes unf{from{transform:perspective(900px) rotateX(-88deg);opacity:0}60%{opacity:1}}
+.paper p{margin-bottom:34px}
+/* final */
+#s7{justify-content:center;text-align:center;background:radial-gradient(circle at 50% 30%,#ffe9c9,#f8b9d3 60%,#d9a7e8)}
+#s7 h1{font-size:clamp(32px,10vw,50px);color:#fff;text-shadow:0 3px 18px #b0457a88;animation:fin 2s}
+#s7 .e{opacity:0;transition:opacity 2s;font-family:var(--hand);font-size:28px;margin-top:22px;color:#6b3a4f}#s7 .e.show{opacity:1}
+.fw{font-size:52px;letter-spacing:8px;animation:fl 3s infinite}
+@media(prefers-reduced-motion:reduce){*{animation-duration:.01s!important}}
+
+.sc{background:radial-gradient(circle at 12% 8%,#fff,#fff0 38%),radial-gradient(circle at 92% 28%,#e6d2ff99,#0000 45%),radial-gradient(circle at 18% 92%,#ffd9c499,#0000 42%),linear-gradient(160deg,#fff8f0,#fadde8 55%,#dccdf2)}
+.sc::before{content:"";position:fixed;inset:-60px;pointer-events:none;z-index:0;opacity:.55;background:radial-gradient(circle,#fff 0 2px,#0000 3px) 0 0/55px 65px,radial-gradient(circle,#ffe3a8 0 1.5px,#0000 2.5px) 20px 30px/90px 80px,radial-gradient(circle,#ffffff66 0 14px,#0000 15px) 10px 10px/170px 190px;animation:dr 40s linear infinite}
+@keyframes dr{to{transform:translate(55px,65px)}}
+.sc:not(#s1):not(#s9):not(#s11):not(#s12)>*{position:relative;z-index:1}.sc>.note,.sc>.mg-ar{position:fixed}
+#s2 h2,#s4 h2,#s5 h2,#s6 h2,#s8 h2{background:linear-gradient(120deg,#c9a24f,#e8789f 50%,#b3569a);-webkit-background-clip:text;background-clip:text;color:transparent}
+#s2 h2{font-family:'Great Vibes',cursive;font-weight:400;font-size:clamp(42px,13vw,60px)}
+#s4 h2{font-family:'Parisienne',cursive;font-weight:400;font-size:clamp(38px,11vw,54px)}
+#s5 h2{font-family:'Pinyon Script',cursive;font-weight:400;font-size:clamp(38px,11vw,54px)}
+#s6 h2{font-family:'Great Vibes',cursive;font-weight:400;font-size:clamp(40px,12vw,56px)}
+#s8 h2{font-family:'Italiana',serif;letter-spacing:.06em;font-size:clamp(28px,8vw,38px)}
+#s0 h1{font-family:'Italiana',serif;letter-spacing:.04em;background:linear-gradient(120deg,#d4a24c,#e8789f,#a56bd1);-webkit-background-clip:text;background-clip:text;color:transparent}
+.rev h2{font-family:'Cormorant Garamond',serif!important;font-style:italic;background:none!important;-webkit-text-fill-color:#b0457a}
+.q{font-family:'Parisienne',cursive;font-style:normal;font-size:24px}
+#s9{position:fixed;inset:0;z-index:80;background:#000;display:none;flex-direction:column;align-items:center;justify-content:center;color:#fff;text-align:center;padding:0}
+#s9.on{display:flex}#s9::before{display:none}
+#s9 .tp{font-family:var(--hand);font-size:24px;animation:fl 2s infinite;color:#ffc4dc}
+#s9 .pr{font-size:12px;letter-spacing:.5em;opacity:0;color:#ffd9a0}
+#s9 .lg{font-family:'Italiana',serif;font-size:27vw;color:#f7a8c8;opacity:0;transform:scale(2.4);text-shadow:0 0 40px #e8789f,0 0 90px #e8789f88;line-height:1}
+#s9.go .pr{animation:fi 1s .2s forwards}#s9.go .lg{animation:zm 3s .8s cubic-bezier(.2,.8,.2,1) forwards}#s9.go .tp{display:none}
+#s9 .sh{position:absolute;left:-40%;top:0;bottom:0;width:30%;background:linear-gradient(100deg,#0000,#fff6,#0000);transform:skewX(-20deg);opacity:0}
+#s9.go .sh{animation:shn 1.8s 1.6s}
+@keyframes fi{to{opacity:.9}}@keyframes zm{40%{opacity:1;transform:scale(1)}to{opacity:1;transform:scale(.92);letter-spacing:.08em}}@keyframes shn{20%{opacity:1}to{left:130%;opacity:0}}
+#s8{text-align:center}
+#arena{position:relative;width:100%;max-width:380px;height:52vh;overflow:hidden;margin:10px auto;touch-action:manipulation}
+#arena span{position:absolute;top:-50px;font-size:38px;animation:fall linear forwards;user-select:none}
+@keyframes fall{to{transform:translateY(60vh)}}
+#s8 .sc2{font-family:var(--hand);font-size:26px}
+.env .pin{position:absolute;left:7%;right:7%;top:12px;bottom:12px;background:#fffdf7;box-shadow:0 0 6px #0002;transition:transform 1.1s .7s cubic-bezier(.3,1,.4,1)}
+.env.open .pin{transform:translateY(-95px)}
+.env .seal{width:42px;height:42px;margin:-21px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#ff8fb3,#c2305f 70%);box-shadow:0 3px 6px #0005,inset 0 0 0 3px #ffffff33;display:grid;place-items:center;font-size:18px;color:#ffe3ee}
+.env .back{background:linear-gradient(#f2a0c0,#e98bb4)}
+.paper{background-color:#fffdf7;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.8' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 .6 0 0 0 0 .4 0 0 0 0 .4 0 0 0 .09 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E"),repeating-linear-gradient(transparent 0 33px,#f3d4de 33px 34px);animation:unf2 1.8s cubic-bezier(.3,.9,.3,1) both}
+.paper::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(transparent 33%,#0002 33.3%,#fff6 33.6%,transparent 34%,transparent 66%,#0002 66.3%,#fff6 66.6%,transparent 67%);animation:cr 3.5s forwards}
+@keyframes cr{70%{opacity:1}to{opacity:.12}}
+@keyframes unf2{0%{transform:perspective(800px) translateY(40px) rotateX(-85deg) scaleY(.3);opacity:0}30%{opacity:1}70%{transform:perspective(800px) rotateX(-12deg)}100%{transform:perspective(800px) rotateX(0)}}
+
+#s0,#s4,#s5,#s6,#s7{justify-content:safe center}
+.gift{width:200px;height:230px;margin:30px auto}
+.bx{left:10px;right:10px;bottom:0;height:130px}
+.lid{left:0;right:0;bottom:118px;height:44px}
+.bow{top:8px;left:50%;margin-left:-32px;width:64px;text-align:center}
+.rv1{bottom:0;height:174px}.rh{bottom:50px}
+#s10,#s13{text-align:center;justify-content:safe center}
+#s10 h2{font-family:'Italiana',serif;font-size:clamp(28px,8vw,38px)}
+.face{font-size:96px;margin:10px 0;filter:drop-shadow(0 8px 14px #0003)}.ang{animation:shk .25s infinite}
+@keyframes shk{25%{transform:translate(-4px,2px) rotate(-5deg)}75%{transform:translate(4px,-2px) rotate(5deg)}}
+.yes{background:linear-gradient(135deg,#ff8fb3,#e8789f);color:#fff;border-radius:40px;padding:12px 26px;font-weight:600;box-shadow:0 8px 24px #e8789f77;transition:font-size .3s,padding .3s;max-width:92vw}
+.no{background:#fff;border-radius:40px;padding:10px 22px;box-shadow:0 4px 12px #0002;transition:left .18s,top .18s;z-index:20}
+#s11,#s12{background:#000;color:#fff;display:none;overflow:hidden;padding:0}
+#s11.on,#s12.on{display:block}#s11::before,#s12::before{display:none}
+#nl{position:fixed;inset:0;z-index:3;pointer-events:none;overflow:hidden;display:none}
+.lt2{position:absolute;bottom:-50px;color:#ffe9b8;white-space:nowrap;text-shadow:0 0 6px #fff,0 0 14px #ffd36b,0 0 26px #ff7aa8;animation:rise linear forwards}
+@keyframes rise{0%{opacity:0;transform:translateY(0)}15%,85%{opacity:1}100%{opacity:0;transform:translateY(-118vh)}}
+.stars{position:absolute;inset:0;background:radial-gradient(circle,#fff 0 1px,#0000 2px) 0 0/70px 90px,radial-gradient(circle,#ffe9b8 0 1.5px,#0000 2.5px) 30px 40px/110px 120px;animation:tw 3s infinite alternate}
+@keyframes tw{to{opacity:.35}}
+.nt{position:absolute;top:50%;left:0;right:0;text-align:center;font-family:'Great Vibes',cursive;font-size:42px;color:#ffd9ec;text-shadow:0 0 18px #ff7aa8;transform:translateY(-50%);animation:fin 3s}
+.cr{position:absolute;left:0;right:0;top:0;text-align:center;padding:0 24px;font-family:'Italiana',serif;color:#ffe9c4;animation:roll 40s linear forwards;text-shadow:0 0 10px #ff7aa888}
+.cr h3{font-size:12px;letter-spacing:.4em;color:#f3a6c4;margin:60px 0 8px;font-weight:400}.cr p{font-size:26px;line-height:1.3}.cr .big{font-family:'Great Vibes',cursive;font-size:52px;margin:40px 0}
+@keyframes roll{from{transform:translateY(100vh)}to{transform:translateY(-100%)}}
+.card{display:inline-grid;place-items:center;width:70px;height:84px;margin:5px;border-radius:12px;background:linear-gradient(135deg,#f3a6c4,#e8789f);color:#fff;font-size:34px;box-shadow:0 6px 14px #b0457a44;transition:transform .4s;transform-style:preserve-3d}
+.card.up{background:#fff;transform:rotateY(0)}.card span{opacity:0}.card.up span{opacity:1}
+.nt{top:12%!important;font-size:34px!important}
+/* polish pass: softer lighting, depth, accessible touch targets */
+:root{--ink:#603247}
+body{background:#f8dce9}
+.sc{background:
+ radial-gradient(ellipse at 12% 12%,#fff 0,transparent 34%),
+ radial-gradient(ellipse at 88% 18%,#f6d8ff99 0,transparent 38%),
+ radial-gradient(ellipse at 50% 100%,#ffe5c9aa 0,transparent 48%),
+ linear-gradient(145deg,#fffaf6 0%,#f9d9e8 48%,#e9dcfa 100%)}
+.sc:after{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;background:radial-gradient(circle at 50% 45%,#fff5 0 1px,transparent 2px) 0 0/42px 46px;opacity:.55}
+.sc:not(#s1):not(#s9):not(#s11):not(#s12)>*{z-index:1}
+.glass{background:linear-gradient(145deg,#ffffffc9,#fff7);border:1px solid #fff;box-shadow:0 18px 45px #9e5b8030, inset 0 1px 0 #fff;backdrop-filter:blur(16px)}
+.btn,.yes{min-height:48px;box-shadow:0 10px 26px #c86d9660,inset 0 1px 0 #ffffff88}
+.btn:focus-visible,button:focus-visible{outline:3px solid #c99b45;outline-offset:3px}
+.ring{box-shadow:0 0 0 8px #ffffff55,0 0 48px #e98dbb99}
+.pol,.feat,.gift,.cake,.env{filter:drop-shadow(0 16px 22px #9c58702b)}
+#s1 .st{background-size:200% 200%;animation:sceneGlow 10s ease infinite}
+@keyframes sceneGlow{50%{background-position:100% 100%}}
+#arena{height:min(52vh,430px);min-height:260px;border-radius:24px;overflow:hidden;position:relative;box-shadow:inset 0 0 30px #fff8,0 12px 30px #b56b8c22}
+#arena span{cursor:pointer;touch-action:manipulation;filter:drop-shadow(0 5px 8px #b0457a55);font-size:42px}
+#mg{display:grid;grid-template-columns:repeat(3,minmax(76px,1fr));gap:12px;width:min(88vw,330px);perspective:1000px}
+.card{width:100%;height:94px;margin:0;position:relative;border:1px solid #fff9;background:linear-gradient(145deg,#f8c9dc,#d9b9ed);box-shadow:0 10px 20px #9b5c7833;transform-style:preserve-3d;cursor:pointer;touch-action:manipulation}
+.card:before{content:"♡";position:absolute;inset:0;display:grid;place-items:center;color:#fff;font-family:Georgia,serif;font-size:40px;text-shadow:0 3px 12px #a84e7b66;backface-visibility:hidden}
+.card span{position:absolute;inset:0;display:grid;place-items:center;font-size:38px;opacity:0;transform:rotateY(180deg);backface-visibility:hidden}
+.card.up{background:linear-gradient(145deg,#fff,#fff2f7);transform:rotateY(180deg);box-shadow:0 12px 26px #b56b8c44}
+.card.up span{opacity:1}
+.card.matched{outline:2px solid #c9a24f;box-shadow:0 0 0 4px #f5e5bd88,0 10px 20px #9b5c7833}
+#s11{background:radial-gradient(ellipse at 50% 45%,#271a35,#090710 72%)}
+#s11 .nt{font-size:clamp(28px,8vw,38px)!important;line-height:1.4;top:14%!important;padding:0 18px}
+#s11 .stars{background:
+ radial-gradient(circle,#fff 0 1px,transparent 2px) 0 0/55px 67px,
+ radial-gradient(circle,#ffdca8 0 1.5px,transparent 2.5px) 20px 30px/95px 105px;
+ animation:tw 2.5s infinite alternate}
+#nl{z-index:4}
+.lt2{max-width:90vw;white-space:normal;text-align:center;line-height:1.25;padding:8px 14px;border:1px solid #ffe9c455;border-radius:18px;background:#190e25a8;backdrop-filter:blur(8px);font-size:clamp(20px,5vw,29px)!important;box-shadow:0 0 18px #ff7aa855,0 0 40px #ffd36b22}
+#nextGlow{position:absolute;bottom:calc(26px + env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);z-index:7;min-width:190px}
+#glowProgress{position:absolute;bottom:calc(88px + env(safe-area-inset-bottom));left:0;right:0;text-align:center;color:#ffe9c4;font-size:12px;letter-spacing:.12em;z-index:6}
+.paper{box-shadow:0 28px 70px #8e4b6c66,0 0 0 8px #ffffff55}
+.pg{background-image:radial-gradient(circle at 100% 0,#f8e4ed66,transparent 36%)}
+@media(max-width:380px){.pg{padding-left:18px;padding-right:18px}.card{height:82px}}
+@media(prefers-reduced-motion:reduce){.sc:after,.stars,.lt2{animation:none!important}}
+</style></head><body>
+<div id="load"><b>🎀</b><div class="hand">Opening Jana's world…</div></div>
+<div id="fx"></div><canvas id="cv"></canvas>
+
+<!-- S0 -->
+<section class="sc on" id="s9" onclick="intro()"><div class="sh"></div><div class="pr">RAJ PRESENTS</div><div class="lg">JANA</div><div class="tp">tap anywhere ♡<br><small style="font-family:var(--sans);font-size:11px;color:#fff9">sound on, please 🎧</small></div></section>
+<section class="sc" id="s0">
+<div class="note glass">🎂 <b>It's Jana's birthday!</b> Someone sent you a surprise ♡</div>
+<div class="ring" id="rg"><div><svg viewBox="0 0 100 100"><rect width="100" height="100" fill="#fadde8"/><circle cx="50" cy="58" r="26" fill="#fff4ec"/><path d="M24 50Q50 8 76 50Q60 24 50 30Q40 24 24 50Z" fill="#e8789f"/><circle cx="50" cy="26" r="6" fill="#c9a24f"/><text x="50" y="68" text-anchor="middle" font-family="Georgia" font-style="italic" font-size="30" fill="#e8789f">J</text></svg></div></div>
+<p style="margin-top:10px;font-weight:500">jana ♡</p>
+<p style="font-size:13px;margin:4px 0">The main character of this little universe 🎀</p>
+<div class="hl"><div>🌸</div><div>🦋</div><div>🎁</div><div>🎂</div></div>
+<h1>IT'S YOUR DAY, PRINCESS.</h1>
+<p style="margin-top:10px;font-family:var(--serif);font-size:19px;font-style:italic">Someone made something special just for you.</p>
+<button class="btn" onclick="openWorld()">OPEN YOUR BIRTHDAY WORLD ♡</button>
+</section>
+
+<!-- S1 stories -->
+<section class="sc" id="s1"><div class="bars" id="bars"></div><div class="who">🎀 jana ♡ <span style="opacity:.8">now</span></div>
+<div class="st" id="st"><div class="stk" id="stk"></div><h2 id="stt"></h2><small>for Jana</small></div>
+<div class="tap"><div onclick="stp(-1)"></div><div onclick="stp(1)"></div></div>
+<button class="btn" id="sbtn" style="display:none" onclick="go(2)">CONTINUE ♡</button></section>
+
+<!-- S2 scrapbook -->
+<section class="sc" id="s2">
+<h2>✨ Our Little Universe 🌍</h2><div class="hand">a digital scrapbook ♡</div>
+<div class="glass map"><svg viewBox="0 0 390 180" width="100%" style="border-radius:14px;background:linear-gradient(#e9f1fb,#d8e6f7)">
+<defs><path id="rt" d="M290 90Q170 -10 50 65"/><radialGradient id="gl"><stop offset="0" stop-color="#ff7aa8"/><stop offset="1" stop-color="#ff7aa800"/></radialGradient></defs>
+<g stroke="#fff" stroke-width=".6" opacity=".7"><path d="M0 45H390M0 90H390M0 135H390M65 0V180M130 0V180M195 0V180M260 0V180M325 0V180"/></g>
+<path d="M206.1 21.7L211.2 23.6L214.9 23.0L216.0 20.7L222.7 18.4L223.7 14.4L227.9 13.5L228.7 11.7L231.1 13.0L235.4 13.2L240.7 14.9L244.3 13.3L246.0 14.2L247.6 12.0L250.6 12.1L251.9 9.3L254.0 7.6L256.7 8.7L256.2 10.2L257.7 10.5L257.2 14.7L259.2 16.3L266.3 12.5L274.9 12.9L275.8 14.3L264.6 16.4L259.2 17.5L256.3 19.6L258.1 24.2L255.6 26.3L255.8 28.3L254.4 30.1L249.7 29.9L251.6 33.2L248.4 34.5L246.3 37.5L246.6 40.5L244.6 41.9L239.0 42.1L238.4 43.5L234.7 43.5L231.9 46.3L231.7 50.6L225.2 52.6L221.8 52.2L220.7 53.3L217.8 52.7L212.7 53.4L204.4 50.9L208.9 46.3L208.5 43.1L204.7 42.3L202.7 35.1L204.8 32.4L202.6 31.6ZM3.0 -9.3L2.3 -7.6L3.0 -5.4L5.1 -4.2L5.0 -2.9L3.4 -2.2L3.1 -0.6L0.8 1.9L-3.0 -1.3L-3.4 -3.6L-2.3 -8.6L-3.5 -11.0L-1.3 -13.4L-1.0 -12.5L0.4 -12.9L2.6 -11.1ZM157.9 78.8L158.8 78.5L159.0 79.9L162.9 79.1L170.0 79.4L180.4 69.7L182.0 75.4L179.4 75.4L179.0 78.7L179.9 79.3L177.6 80.3L177.6 82.4L175.0 87.5L160.0 85.0ZM117.9 -5.5L124.9 -6.2L127.8 -4.1L126.8 -2.8L129.5 -1.1L128.1 0.5L132.4 2.7L132.5 6.1L130.7 6.3L128.7 2.6L126.5 2.6L118.3 -1.3L118.8 -3.7ZM125.0 1.3L126.5 2.6L128.7 2.6L130.7 6.3L127.3 5.6L124.8 3.3L124.0 1.4ZM136.9 -6.1L139.1 -5.8L142.9 -9.0L148.1 -2.9L150.4 -2.6L152.0 -1.3L147.8 -0.9L146.1 4.8L144.3 5.9L144.4 8.4L143.2 8.6L140.1 6.0L141.8 3.6L140.3 2.1L138.4 2.5L132.5 6.1L132.4 2.7L128.1 0.5L129.5 -1.1L126.8 -2.8L127.8 -4.1L124.9 -6.2L126.1 -7.1L132.5 -5.3L133.2 -5.9L130.7 -8.6L132.0 -9.3L133.4 -9.1ZM363.4 89.8L363.3 93.4L361.5 92.6L361.8 96.6L359.2 89.1L357.1 86.2L352.5 86.0L352.9 88.0L351.4 90.8L349.2 89.8L348.5 90.7L345.2 89.7L342.6 81.8L343.5 78.8L340.4 77.5L341.5 75.7L344.7 73.8L341.0 71.2L342.8 67.8L346.8 69.9L349.2 70.2L349.6 73.7L361.9 75.1L359.6 79.3L357.3 79.6L355.8 82.5L358.5 85.1L359.3 81.9L360.7 81.9ZM358.5 61.1L360.5 62.7L360.2 65.8L351.9 65.6L348.7 66.4L344.2 64.5L344.1 63.5L347.4 59.8L350.1 58.5L356.3 59.8ZM-23.6 162.9L-19.5 162.5L-18.5 161.2L-16.5 162.5L-10.2 160.5L-5.4 156.8L-5.9 155.1L0.3 154.9L5.0 152.6L8.6 147.2L11.2 145.1L14.3 144.3L14.9 146.4L17.8 149.6L17.3 155.2L25.6 160.9L25.6 162.5L31.1 167.3L32.3 170.3L36.1 172.2L36.9 173.8L32.0 174.2L28.3 173.7L24.0 175.5L22.1 174.5L16.5 177.0L14.2 176.4L12.0 179.9L4.6 178.4L-2.7 174.8L-7.3 179.0L-7.7 182.5L-14.3 181.4L-17.3 184.0L-19.9 188.7L-20.7 184.9L-23.0 183.3L-27.6 176.3L-27.3 168.9ZM538.3 -48.8L547.0 -47.2L552.9 -43.6L554.9 -39.0L562.5 -38.9L566.9 -40.9L575.1 -42.4L570.6 -36.1L568.8 -30.6L565.5 -25.7L559.4 -26.6L555.1 -24.8L556.4 -20.6L555.7 -14.6L553.2 -14.5L553.2 -12.0L550.0 -14.9L548.0 -12.1L540.3 -10.0L541.0 -7.3L536.7 -7.5L534.3 -9.1L530.9 -5.5L521.3 0.4L514.3 1.8L510.7 4.1L505.3 5.5L507.9 3.2L506.9 1.2L510.8 -2.1L508.2 -4.7L498.2 0.5L495.1 3.7L490.2 4.0L487.7 6.3L490.3 9.7L494.4 10.5L494.6 12.8L498.5 14.2L504.1 10.6L508.6 12.6L511.8 12.7L512.6 15.3L505.5 16.7L503.2 19.4L498.3 22.0L495.8 25.5L501.1 28.2L503.1 33.1L509.5 41.5L509.5 45.3L506.3 46.6L507.5 49.3L510.5 50.8L508.4 58.9L505.6 59.3L493.3 77.3L479.5 86.1L473.8 86.7L470.8 88.9L469.0 87.3L466.2 89.7L459.2 92.2L453.9 93.0L452.2 98.3L449.4 98.6L448.1 95.0L449.3 93.0L442.6 91.4L440.3 92.2L435.2 90.9L432.8 88.9L433.6 86.0L429.1 85.1L426.6 83.2L422.4 85.9L413.5 86.5L408.3 88.4L409.0 94.1L406.4 94.0L405.8 90.8L402.1 92.2L396.2 89.4L397.7 85.3L394.5 84.3L393.3 79.7L388.0 80.5L388.6 74.6L393.4 70.4L393.4 62.5L391.2 61.3L389.6 58.3L381.2 57.9L382.9 55.8L380.6 52.7L377.0 54.8L372.8 53.6L362.5 60.5L358.5 61.1L356.3 59.8L350.1 58.5L347.4 59.8L344.1 63.5L343.7 59.6L340.6 60.6L329.1 59.0L321.2 55.8L319.5 53.4L316.7 52.7L311.6 49.4L307.6 47.9L305.6 49.1L298.6 45.6L293.7 42.4L292.3 36.9L295.9 37.6L296.0 35.0L294.1 32.5L294.6 28.4L289.2 22.5L281.0 20.5L279.5 16.7L274.9 12.9L274.3 8.1L271.3 7.0L269.6 7.5L268.4 2.8L269.8 1.7L269.1 0.5L277.3 -2.8L282.6 -2.1L284.5 -5.3L290.9 -5.9L292.7 -7.9L300.6 -10.6L301.3 -11.7L300.9 -14.6L304.3 -15.9L299.8 -24.6L312.3 -27.7L315.9 -36.7L325.8 -35.0L328.6 -37.3L328.8 -42.3L333.0 -42.7L336.8 -46.1L338.8 -46.5L340.1 -43.0L344.3 -40.3L351.4 -38.5L354.9 -34.4L352.9 -28.6L354.7 -26.4L367.4 -24.9L373.4 -21.8L376.5 -21.2L378.8 -16.6L381.7 -13.6L397.6 -12.6L404.2 -13.3L409.2 -12.6L416.6 -9.5L422.6 -9.5L424.8 -8.0L430.6 -10.7L438.7 -12.4L446.2 -12.6L452.1 -14.4L459.1 -18.7L456.7 -22.3L459.4 -25.5L467.3 -24.0L472.3 -26.7L479.9 -28.6L483.6 -31.9L487.1 -33.4L498.3 -33.5L498.9 -35.2L494.3 -38.7L490.3 -40.3L486.5 -38.5L481.5 -39.3L478.7 -38.6L477.4 -40.7L483.4 -49.4L489.4 -47.6L496.4 -50.7L496.4 -52.9L500.9 -58.2L503.7 -59.8L503.6 -62.6L500.9 -63.8L505.0 -66.3L517.9 -67.3L529.7 -64.0L536.4 -53.7ZM54.2 182.5L53.9 188.3L55.9 189.0L52.3 192.1L49.4 197.0L47.9 206.7L46.5 208.1L45.1 214.2L46.4 216.5L47.6 227.1L47.1 229.7L48.1 232.6L51.0 235.4L53.7 241.7L45.0 242.0L43.7 242.6L42.2 245.8L43.4 248.0L41.9 259.0L46.7 261.8L48.1 260.9L48.5 266.3L44.7 266.2L40.8 261.4L36.9 260.7L35.8 258.0L32.8 259.6L28.8 258.9L27.1 256.7L21.6 256.3L21.3 254.8L17.3 254.3L10.8 255.4L11.0 249.5L9.4 247.6L9.7 241.5L8.6 236.5L2.6 236.5L3.0 234.7L0.5 234.7L0.2 235.6L-2.9 235.8L-4.9 239.9L-7.7 239.2L-12.6 240.3L-15.7 236.1L-18.4 229.4L-33.1 229.3L-38.4 230.5L-39.1 228.9L-37.8 228.4L-36.8 225.0L-35.0 223.9L-33.7 224.4L-32.0 222.5L-29.3 222.6L-29.0 224.0L-27.1 224.9L-20.0 217.7L-20.1 213.6L-18.0 208.7L-12.4 203.7L-11.8 202.1L-10.5 191.3L-8.0 185.5L-7.3 179.0L-5.3 176.5L-2.7 174.8L4.6 178.4L12.0 179.9L14.2 176.4L16.5 177.0L22.1 174.5L24.0 175.5L28.3 173.7L36.9 173.8L39.9 178.0L42.1 178.6L48.6 177.0L49.8 179.1ZM63.7 24.3L64.7 23.1L68.3 23.1L72.9 21.6L69.3 24.5ZM69.9 24.7L64.9 27.1L62.5 26.5L61.3 24.5L66.0 24.1L67.4 25.0ZM115.4 136.5L116.6 138.0L116.4 140.1L113.6 141.3L115.7 142.7L113.9 145.4L112.8 144.5L111.6 144.8L108.8 144.7L108.3 141.8L111.8 137.3L113.9 137.7ZM111.8 137.3L104.5 129.4L100.1 127.4L96.7 127.3L95.5 126.3L92.6 127.5L89.5 125.2L88.0 128.9L82.1 127.9L81.6 125.9L83.8 118.5L84.3 115.2L85.8 113.7L89.5 112.9L92.1 110.0L96.3 120.4L105.9 127.5L115.4 136.5L113.9 137.7ZM89.5 125.2L92.6 127.5L95.5 126.3L96.7 127.3L100.1 127.4L104.5 129.4L108.0 132.7L111.8 137.3L108.3 141.8L108.8 144.7L112.8 144.5L113.9 145.4L112.8 147.1L118.4 154.1L134.7 160.0L138.9 160.0L124.8 175.0L118.3 175.2L113.8 178.7L110.6 178.8L109.3 180.4L105.9 180.4L103.8 178.7L99.3 180.8L97.8 182.9L90.6 182.0L84.3 177.8L80.8 177.8L79.1 176.1L79.1 173.3L76.5 172.5L73.5 167.0L71.3 165.9L67.8 161.4L64.8 161.1L66.5 158.2L69.1 158.1L71.3 146.8L73.7 145.4L76.3 139.6L79.3 137.1L82.1 127.9L88.0 128.9ZM18.5 21.5L21.2 23.2L28.8 23.2L28.7 24.1L31.5 23.5L30.8 25.0L23.6 25.4L23.7 24.6L17.6 23.6ZM33.0 -7.8L31.5 -4.7L30.3 -4.1L24.6 -4.7L18.6 -3.4L22.0 -0.6L16.7 0.2L14.1 -2.4L13.1 -1.3L14.2 1.7L16.8 4.0L14.9 5.1L20.1 8.9L20.2 11.7L15.6 10.4L17.0 13.0L13.9 13.5L15.8 17.9L12.5 18.0L8.4 15.8L5.6 8.4L1.1 3.3L0.8 1.9L3.1 -0.6L3.4 -2.2L5.0 -2.9L5.1 -4.2L13.0 -5.7L13.8 -6.5L18.5 -6.5L22.5 -7.9L26.0 -6.2L30.5 -6.6L30.6 -9.1ZM429.1 229.3L423.6 229.4L419.3 225.2L412.9 221.1L407.0 214.0L400.7 203.3L396.3 199.1L393.0 190.9L388.5 187.7L385.9 183.5L376.9 175.1L376.5 172.6L387.4 173.8L403.2 189.5L408.3 189.6L412.5 193.0L415.4 197.2L419.2 199.5L417.2 203.6L421.8 205.4L424.4 211.7L428.1 212.1L430.5 215.3L429.3 221.5ZM169.6 14.0L174.0 13.0L177.6 10.2L180.9 10.3L183.1 9.4L196.2 12.9L201.9 17.4L205.6 17.5L206.1 21.7L202.6 31.6L204.8 32.4L202.7 35.1L204.7 42.3L208.5 43.1L208.9 46.3L204.4 50.9L208.9 56.5L213.6 58.7L213.8 63.1L216.2 63.9L216.6 66.2L209.4 68.8L207.5 74.6L187.0 71.3L184.9 65.2L182.5 64.3L173.6 67.6L167.5 65.9L162.4 62.1L157.6 60.7L150.6 49.3L147.9 50.1L144.7 48.4L142.8 50.4L140.1 47.7L140.0 45.1L138.4 45.1L139.2 41.5L136.7 37.7L130.5 34.9L127.1 30.2L128.2 26.3L130.8 24.5L130.4 21.6L127.1 20.1L121.1 10.1L122.1 8.6L120.5 2.9L124.0 1.4L127.3 5.6L130.7 6.3L140.3 2.1L141.8 3.6L140.1 6.0L143.2 8.6L144.4 8.4L146.0 12.1L150.7 13.1L154.2 15.6L161.3 16.5L169.1 15.2ZM127.1 20.1L130.4 21.6L130.8 24.5L128.2 26.3L127.1 30.2L130.5 34.9L136.7 37.7L139.2 41.5L138.4 45.1L140.0 45.1L140.1 47.7L142.8 50.4L136.5 49.7L132.8 54.5L123.5 54.1L109.4 44.0L102.0 40.6L96.0 39.2L94.0 33.1L105.0 27.9L106.9 21.9L106.4 18.2L109.2 17.0L111.7 13.9L113.9 13.1L119.7 13.7L121.5 15.0L123.9 14.1ZM78.6 36.5L77.7 38.0L75.9 37.3L74.9 40.7L76.1 41.2L74.9 41.9L74.6 43.2L77.0 42.6L77.1 44.5L74.6 52.5L71.3 43.9L72.8 42.3L75.5 34.6L79.1 33.6ZM77.7 38.0L78.6 36.5L84.2 38.4L94.0 33.1L96.0 39.2L85.0 42.5L90.0 47.5L87.5 50.0L83.7 50.7L80.3 54.0L74.8 53.2L77.1 44.5ZM105.0 204.3L107.9 208.4L104.4 210.4L103.2 212.5L101.3 212.9L98.0 221.7L96.0 223.4L88.8 218.4L88.5 215.5L69.5 204.8L69.5 199.5L75.2 190.5L72.4 182.2L70.0 178.8L76.5 172.5L79.1 173.3L79.1 176.1L80.8 177.8L84.3 177.8L90.6 182.0L97.8 182.9L99.3 180.8L103.8 178.7L105.9 180.4L109.3 180.4L104.9 186.1ZM254.8 -11.3L255.9 -13.5L259.2 -14.2L267.4 -12.5L268.2 -15.5L271.1 -16.5L278.2 -14.4L295.7 -14.3L298.2 -12.5L301.3 -11.7L300.6 -10.6L292.7 -7.9L290.9 -5.9L284.5 -5.3L282.6 -2.1L277.3 -2.8L269.1 0.5L269.8 1.7L268.4 2.8L258.9 3.6L252.7 2.0L247.3 2.4L247.8 -0.5L253.2 0.3L255.1 -1.2L258.9 -0.7L265.3 -4.3L259.4 -7.0L255.8 -5.7L252.1 -7.6L256.3 -10.8ZM139.9 50.1L142.1 57.2L138.5 57.4L137.3 55.0L132.8 54.5L136.5 49.7ZM79.1 33.6L75.6 34.5L79.9 26.9L82.2 27.0L83.1 29.0L80.3 30.9ZM-25.7 85.7L-29.3 87.5L-32.1 84.8L-40.0 82.6L-42.2 79.5L-46.1 77.2L-48.5 78.1L-50.3 75.3L-50.4 73.2L-53.4 69.5L-51.4 67.4L-51.6 59.3L-50.7 55.2L-52.6 48.5L-50.1 47.3L-50.2 43.1L-42.8 38.2L-42.6 34.3L-36.7 36.0L-30.4 36.4L-23.8 38.7L-21.4 43.1L-9.9 46.2L-4.6 48.7L0.3 45.1L-0.9 41.2L0.7 38.8L4.3 36.5L7.7 35.8L14.5 36.8L16.2 39.0L24.6 40.5L25.8 42.2L24.0 44.6L24.8 46.7L23.5 49.8L25.0 53.8L25.0 100.0L19.3 100.0L19.2 102.1L-20.7 83.0ZM308.9 162.4L308.2 167.6L306.1 169.0L301.7 170.2L299.4 166.2L298.5 159.0L300.7 150.9L304.2 153.7ZM397.7 99.1L394.8 101.2L391.3 101.5L389.0 106.9L386.9 107.8L394.5 119.1L392.7 123.5L391.0 124.4L395.5 130.9L396.0 136.0L397.9 140.5L392.8 150.3L392.3 146.6L393.8 142.8L392.1 139.8L392.5 134.4L390.5 131.8L388.0 119.5L385.8 115.4L376.8 121.4L370.9 119.8L372.7 113.6L371.6 108.9L367.7 103.2L368.3 101.4L365.4 100.7L361.8 96.6L361.5 92.6L363.3 93.4L363.4 89.8L365.8 88.6L365.3 86.5L366.4 84.8L366.6 79.6L370.5 80.7L372.8 76.6L373.0 74.2L375.8 70.0L375.6 67.1L382.1 63.7L385.7 64.6L385.3 61.5L387.0 60.6L386.6 58.7L389.6 58.3L391.2 61.3L393.4 62.5L393.4 70.4L388.6 74.6L388.0 80.5L393.3 79.7L394.5 84.3L397.7 85.3L396.2 89.4L402.1 92.2L405.8 90.8L405.9 92.8L400.6 97.9ZM340.6 60.6L340.3 67.9L336.1 68.0L326.3 66.4L323.4 63.8L316.5 63.2L300.4 56.0L302.4 51.4L307.6 47.9L319.5 53.4L321.2 55.8L329.1 59.0ZM194.3 94.4L192.4 97.9L190.2 97.6L189.1 98.8L188.5 105.3L186.2 105.3L183.0 107.1L181.4 110.6L178.3 110.6L176.3 111.8L176.4 113.9L174.0 115.2L171.2 114.8L165.5 116.7L160.0 105.0L175.0 100.0L178.3 90.0L176.0 86.5L176.2 84.4L177.6 82.4L177.6 80.3L179.9 79.3L179.0 78.7L179.4 75.4L182.0 75.4L184.2 78.8L187.0 80.6L193.6 82.2L197.3 86.7L199.0 87.3L196.4 92.8ZM275.8 14.3L279.5 16.7L281.0 20.5L289.2 22.5L284.4 26.7L278.8 27.5L271.2 26.3L268.7 28.4L272.3 36.2L276.3 38.6L272.0 41.5L272.1 45.1L258.9 60.4L253.1 60.1L247.6 65.3L250.8 67.5L251.4 71.4L254.2 73.9L255.2 78.2L244.2 78.2L240.9 81.5L237.2 80.3L235.7 76.7L231.9 72.9L207.5 74.6L209.4 68.8L216.6 66.2L216.2 63.9L213.8 63.1L213.6 58.7L208.9 56.5L204.4 50.9L212.7 53.4L217.8 52.7L220.7 53.3L221.8 52.2L225.2 52.6L231.7 50.6L231.9 46.3L234.7 43.5L238.4 43.5L239.0 42.1L244.6 41.9L246.6 40.5L246.3 37.5L248.4 34.5L251.6 33.2L249.7 29.9L254.4 30.1L255.8 28.3L255.6 26.3L258.1 24.2L256.3 19.6L259.2 17.5ZM154.1 76.2L153.7 72.6L155.1 70.0L156.4 69.4L157.9 71.0L156.9 76.9L155.6 77.2ZM113.9 118.3L111.4 112.6L108.8 110.8L106.1 106.6L104.7 102.6L101.2 99.1L99.0 98.3L95.7 93.5L95.3 87.1L92.5 81.6L87.4 78.6L84.7 72.0L75.7 59.7L73.2 59.7L74.8 53.2L80.3 54.0L83.7 50.7L87.5 50.0L90.0 47.5L85.0 42.5L96.0 39.2L102.0 40.6L109.4 44.0L123.5 54.1L137.3 55.0L138.5 57.4L142.1 57.2L144.0 61.6L150.8 66.6L151.2 72.0L154.1 76.2L155.6 77.2L156.9 76.9L160.0 85.0L175.0 87.5L176.0 86.5L178.3 90.0L175.0 100.0L160.0 105.0L145.6 106.9L140.9 109.2L137.3 114.4L135.0 115.3L133.7 113.6L126.1 112.8L119.0 113.4L116.9 112.1L115.6 114.6L116.1 116.7ZM69.8 152.7L69.1 152.6L68.6 148.4L66.0 146.4L65.4 142.8L66.0 139.1L63.7 138.8L63.4 139.9L60.4 140.1L61.6 141.6L62.0 144.6L56.8 150.9L54.2 151.5L50.0 148.5L48.1 149.6L47.6 151.0L45.0 152.0L44.8 153.0L39.9 153.0L39.2 152.0L35.6 151.8L33.8 152.7L32.4 152.2L29.0 147.9L25.3 148.6L22.7 155.4L19.4 156.9L17.3 155.2L17.8 149.6L14.9 146.4L14.4 143.1L12.5 141.6L11.4 136.8L9.7 137.1L11.5 133.1L10.9 131.1L12.6 129.5L11.5 128.4L15.1 121.6L19.4 121.9L19.3 100.0L25.0 100.0L25.0 90.0L84.3 90.0L85.9 94.9L84.8 95.8L85.6 101.0L87.4 106.9L92.1 110.0L89.5 112.9L85.8 113.7L84.3 115.2L81.6 125.9L82.1 127.9L81.4 132.2L79.3 137.1L76.3 139.6L73.7 145.4L71.3 146.8ZM69.8 152.7L69.1 158.1L66.5 158.2L64.8 161.1L67.8 161.4L70.4 163.9L71.3 165.9L73.5 167.0L76.5 172.5L67.0 181.1L59.4 182.2L56.2 181.1L54.2 182.5L49.8 179.1L48.6 177.0L42.1 178.6L39.9 178.0L36.1 172.2L32.3 170.3L31.1 167.3L25.6 162.5L25.6 160.9L19.4 156.9L22.7 155.4L25.3 148.6L29.0 147.9L32.4 152.2L33.8 152.7L35.6 151.8L39.2 152.0L39.9 153.0L44.8 153.0L45.0 152.0L47.6 151.0L48.1 149.6L50.0 148.5L54.2 151.5L56.8 150.9L62.0 144.6L61.6 141.6L60.4 140.1L63.4 139.9L63.7 138.8L66.0 139.1L65.4 142.8L66.0 146.4L68.6 148.4L69.1 152.6ZM144.7 152.7L138.9 160.0L134.7 160.0L118.4 154.1L112.8 147.1L115.7 142.7L117.4 143.6L118.3 145.7L120.6 147.8L123.1 147.8L144.7 142.9ZM148.6 142.1L155.6 139.9L155.2 146.8L150.4 159.6L143.0 173.3L132.8 185.7L115.7 198.5L110.2 204.6L107.9 208.4L105.0 204.3L104.9 186.1L110.6 178.8L113.8 178.7L118.3 175.2L124.8 175.0L144.7 152.7L144.7 143.0ZM94.0 33.1L84.2 38.4L78.5 36.4L80.3 30.9L83.1 29.0L82.2 27.0L80.0 26.8L79.5 22.9L83.4 18.7L83.7 15.9L85.3 16.9L90.8 15.5L97.6 16.4L103.4 14.5L111.7 13.9L109.2 17.0L106.4 18.2L106.9 21.9L105.0 27.9ZM-27.5 135.7L-27.0 133.3L-30.2 133.2L-30.2 130.0L-32.3 128.2L-30.1 121.6L-23.8 116.9L-23.5 110.4L-20.5 98.1L-24.5 93.5L-25.7 85.7L-20.7 83.0L19.2 102.1L19.4 121.9L15.1 121.6L11.5 128.4L12.6 129.5L10.9 131.1L11.5 133.1L9.7 137.1L11.4 136.8L12.5 141.6L14.4 143.1L14.3 144.3L11.2 145.1L8.6 147.2L5.0 152.6L0.3 154.9L-5.9 155.1L-5.4 156.8L-10.2 160.5L-16.5 162.5L-18.5 161.2L-19.5 162.5L-23.6 162.9L-22.8 161.5L-25.1 156.0L-27.3 155.2L-30.2 152.3L-29.1 149.9L-22.7 150.1L-25.4 145.5L-25.5 138.9ZM412.9 139.1L408.4 136.8L404.2 136.9L404.9 132.9L400.5 133.0L400.1 138.5L395.8 150.2L396.1 153.8L399.4 154.0L402.3 162.9L405.1 165.7L408.1 166.3L410.7 168.9L409.1 170.9L405.8 171.5L405.4 169.0L401.3 166.8L400.4 167.7L398.5 165.8L397.6 163.3L392.5 158.1L391.7 161.0L390.8 158.2L392.8 150.3L397.9 140.5L396.0 136.0L396.1 133.7L395.5 130.9L391.0 124.4L392.7 123.5L394.5 119.1L386.9 107.8L389.0 106.9L391.3 101.5L394.8 101.2L400.6 97.9L402.7 99.5L403.0 102.5L406.4 102.7L405.2 108.0L405.3 112.4L410.6 109.5L412.1 110.3L415.0 110.2L416.0 108.5L419.8 108.8L423.6 112.9L423.9 117.8L427.9 122.1L427.7 126.4L426.1 128.6L421.4 127.9L414.9 128.9L411.7 133.0ZM255.1 -1.2L253.2 0.3L247.8 -0.5L247.3 2.4L252.7 2.0L258.9 3.6L268.4 2.8L269.6 7.5L271.3 7.0L274.3 8.1L274.9 12.9L266.3 12.5L259.2 16.3L257.2 14.7L257.7 10.5L256.2 10.2L256.7 8.7L254.0 7.6L251.9 9.3L250.6 12.1L247.6 12.0L246.0 14.2L244.3 13.3L240.7 14.9L239.1 14.3L242.0 9.2L240.9 5.5L237.2 4.3L238.5 2.1L242.7 2.3L246.6 -3.6L253.3 -4.8L252.3 -2.5L253.0 -1.1ZM206.1 21.7L205.6 17.5L201.9 17.4L196.2 12.9L192.2 12.4L186.7 9.9L177.6 10.2L174.0 13.0L169.6 14.0L168.7 10.5L169.4 5.2L165.5 3.5L166.8 0.1L163.5 -0.2L164.6 -4.4L169.3 -3.2L173.7 -4.8L170.0 -7.8L168.6 -10.6L164.6 -9.3L164.1 -5.7L162.5 -8.9L164.7 -10.6L170.4 -11.6L173.8 -10.2L177.3 -6.3L185.5 -6.6L184.7 -9.1L193.1 -13.8L199.9 -11.1L200.4 -7.1L202.3 -6.1L207.7 -6.3L209.4 -5.4L211.9 -0.3L220.9 5.5L232.7 10.1L232.6 13.2L228.7 11.7L227.9 13.5L223.7 14.4L222.7 18.4L216.0 20.7L214.9 23.0L211.2 23.6ZM84.6 -6.7L91.7 -4.7L101.9 -5.1L107.8 -7.7L113.1 -7.9L117.9 -5.5L118.8 -3.7L118.3 -1.3L124.0 1.4L120.5 2.9L122.1 8.6L121.1 10.1L123.9 14.1L121.5 15.0L119.7 13.7L113.9 13.1L103.4 14.5L97.6 16.4L90.8 15.5L85.3 16.9L83.7 15.9L83.4 18.7L80.7 20.9L78.9 18.6L80.8 16.7L77.8 17.2L73.6 16.0L70.1 18.9L62.5 19.5L58.5 16.8L53.1 16.6L52.0 18.7L48.5 19.3L43.7 16.6L38.2 16.7L35.2 11.7L31.6 9.0L34.0 5.1L30.9 2.7L36.4 -2.1L44.1 -2.3L46.2 -6.1L55.7 -5.4L61.7 -8.7L67.6 -10.1L75.8 -10.2ZM59.3 205.1L53.8 205.1L49.1 207.2L47.9 206.7L49.4 197.0L52.3 192.1L55.9 189.0L53.9 188.3L54.2 182.5L56.2 181.1L59.4 182.2L67.0 181.1L70.0 178.8L72.4 182.2L75.2 190.5L69.5 199.5L69.5 204.8ZM232.6 13.2L232.7 10.1L220.9 5.5L211.9 -0.3L209.4 -5.4L207.7 -6.3L202.3 -6.1L200.4 -7.1L199.9 -11.1L193.1 -13.8L184.7 -9.1L185.5 -6.6L179.8 -6.5L179.6 -25.0L192.5 -27.9L205.3 -22.0L210.1 -17.5L224.5 -18.6L230.5 -15.0L230.1 -10.0L232.6 -9.9L233.6 -5.8L239.9 -5.7L241.3 -3.3L243.2 -3.3L245.4 -6.9L254.8 -11.3L256.3 -10.8L252.1 -7.6L255.8 -5.7L259.4 -7.0L265.3 -4.3L258.9 -0.7L253.0 -1.1L252.3 -2.5L253.3 -4.8L246.6 -3.6L242.7 2.3L238.5 2.1L237.2 4.3L240.9 5.5L242.0 9.2L239.1 14.3ZM77.7 38.0L77.0 42.6L74.6 43.2L74.9 41.9L76.1 41.2L74.9 40.7L75.9 37.3ZM165.5 116.7L161.9 118.1L160.8 122.0L147.9 126.5L143.4 130.0L139.7 130.0L136.8 132.0L128.1 133.5L124.9 136.5L117.4 136.8L115.4 129.7L113.0 123.9L114.0 123.7L113.9 118.3L116.1 116.7L115.6 114.6L116.9 112.1L119.0 113.4L126.1 112.8L133.7 113.6L135.0 115.3L137.3 114.4L140.9 109.2L145.6 106.9L160.0 105.0Z" fill="#fff8f0" stroke="#d9c3b5" stroke-width=".6"/>
+<path d="M289.2 22.5L294.6 28.4L294.1 32.5L296.0 35.0L295.9 37.6L292.3 36.9L293.7 42.4L298.6 45.6L305.6 49.1L302.4 51.4L300.4 56.0L316.5 63.2L323.4 63.8L326.3 66.4L336.1 68.0L340.3 67.9L340.9 65.9L340.2 62.8L340.6 60.6L343.7 59.6L344.2 64.5L348.7 66.4L351.9 65.6L360.2 65.8L360.5 62.7L358.5 61.1L362.5 60.5L367.1 56.8L372.8 53.6L377.0 54.8L380.6 52.7L382.9 55.8L381.2 57.9L386.6 58.7L387.0 60.6L385.3 61.5L385.7 64.6L382.1 63.7L375.6 67.1L375.8 70.0L373.0 74.2L372.8 76.6L370.5 80.7L366.6 79.6L366.4 84.8L365.3 86.5L365.8 88.6L363.4 89.8L360.7 81.9L359.3 81.9L358.5 85.1L355.8 82.5L357.3 79.6L359.6 79.3L361.9 75.1L359.0 74.3L354.4 74.3L349.6 73.7L349.2 70.2L346.8 69.9L342.8 67.8L341.0 71.2L344.7 73.8L341.5 75.7L340.4 77.5L343.5 78.8L342.6 81.8L344.4 85.6L345.2 89.7L344.4 91.5L341.0 91.5L334.9 92.5L335.2 96.3L332.5 99.2L325.3 102.6L319.7 108.5L315.9 111.6L311.0 114.9L311.0 117.2L304.0 120.2L301.6 120.5L300.1 124.3L301.4 135.0L299.3 139.7L299.3 148.2L296.7 148.5L294.4 152.3L295.9 153.9L291.4 155.3L289.7 158.7L287.7 160.2L283.0 155.5L278.7 143.5L277.0 141.1L274.3 136.3L272.2 126.9L267.7 120.0L264.1 104.0L264.1 97.9L263.2 93.2L255.9 96.2L252.4 95.6L245.8 89.6L248.2 87.7L246.7 85.8L240.9 81.5L244.2 78.2L255.2 78.2L254.2 73.9L251.4 71.4L250.8 67.5L247.6 65.3L253.1 60.1L258.9 60.4L264.1 55.2L267.3 50.1L272.1 45.1L272.0 41.5L276.3 38.6L272.3 36.2L268.7 28.4L271.2 26.3L278.8 27.5L284.4 26.7Z" fill="#f7b6cf" stroke="#c9a24f" stroke-width="1.2"/>
+<path d="M74.6 52.5L73.2 54.5L72.1 58.3L70.8 60.9L69.6 61.8L65.7 57.9L62.1 50.7L61.6 51.2L63.7 56.5L66.7 61.5L70.5 69.3L74.0 74.8L78.5 80.4L77.5 81.2L77.6 84.5L84.3 90.0L45.1 90.0L25.0 90.0L25.0 53.8L23.5 49.8L24.8 46.7L24.0 44.6L25.8 42.2L32.5 42.1L44.6 45.6L48.4 44.1L50.5 42.6L54.9 42.2L58.4 42.9L59.8 45.3L61.0 43.7L65.0 44.9L68.9 45.2L71.3 43.9Z" fill="#f7b6cf" stroke="#c9a24f" stroke-width="1.2"/>
+<g fill="#fff"><circle cx="20" cy="20" r="1.3"><animate attributeName="opacity" values="1;.2;1" dur="2s" repeatCount="indefinite"/></circle><circle cx="350" cy="25" r="1.3"><animate attributeName="opacity" values="1;.2;1" dur="3s" repeatCount="indefinite"/></circle></g>
+<use href="#rt" fill="none" stroke="#e8789f" stroke-width="2.2" stroke-linecap="round" stroke-dasharray="2 6"><animate attributeName="stroke-dashoffset" from="32" to="0" dur="2s" repeatCount="indefinite"/></use>
+<circle cx="290" cy="90" r="12" fill="url(#gl)"><animate attributeName="r" values="6;16;6" dur="2s" repeatCount="indefinite"/></circle><circle cx="50" cy="65" r="12" fill="url(#gl)"><animate attributeName="r" values="6;16;6" dur="2s" begin="1s" repeatCount="indefinite"/></circle>
+<circle cx="290" cy="90" r="4" fill="#e8789f"/><circle cx="50" cy="65" r="4" fill="#e8789f"/>
+<text x="290" y="112" font-size="15" text-anchor="middle" fill="#7a2f55" font-family="Parisienne,cursive">India · Raj</text>
+<text x="50" y="52" font-size="15" text-anchor="middle" fill="#7a2f55" font-family="Parisienne,cursive">Egypt · Jana</text>
+<text font-size="20" text-anchor="middle" dy="6">💗<animateMotion dur="5s" repeatCount="indefinite" rotate="0"><mpath href="#rt"/></animateMotion></text>
+</svg></div>
+<div style="display:flex;gap:12px;justify-content:center;margin:6px 0;max-width:380px;width:100%"><div class="glass" style="flex:1;padding:10px;text-align:center"><svg viewBox="0 0 140 112" width="100%" style="max-height:150px"><path d="M114 27L111 32L109 40L106 45L104 47L95 39L88 24L86 25L91 36L97 47L105 63L113 75L122 87L120 89L121 96L133 105L135 107L51 107L8 107L8 30L5 21L8 15L6 10L10 5L24 5L50 13L58 9L63 6L72 5L80 7L83 12L85 8L94 11L102 12L107 9Z" fill="#f7b6cf" stroke="#c9a24f" stroke-width="1.5" stroke-linejoin="round"/></svg><div class="hand" style="font-size:20px">Egypt 🇪🇬</div></div><div class="glass" style="flex:1;padding:10px;text-align:center"><svg viewBox="0 0 140 132" width="100%" style="max-height:150px"><path d="M48 5L53 10L52 14L54 16L54 18L51 18L52 23L63 29L60 31L58 35L72 41L78 42L81 44L90 45L93 45L94 39L96 38L97 42L101 44L104 43L111 44L111 41L110 39L113 39L117 35L122 33L126 34L129 32L131 35L130 37L135 37L135 39L133 40L134 42L131 42L125 45L125 47L123 51L122 53L120 57L117 56L117 60L116 62L116 64L114 65L112 58L110 58L110 61L107 58L109 56L111 56L113 52L110 51L102 50L101 47L99 47L96 45L94 48L97 51L95 52L94 54L96 55L96 58L97 61L98 65L97 66L89 67L89 71L87 73L80 76L75 81L67 87L67 89L61 92L59 92L58 96L59 105L57 109L57 117L55 117L53 120L54 122L50 123L48 126L47 127L42 123L39 113L35 106L33 98L29 92L26 77L26 72L25 68L18 71L15 70L9 65L12 63L10 61L5 57L8 55L18 55L17 51L14 48L14 45L11 43L16 38L21 39L26 34L28 30L33 25L33 22L37 19L33 17L30 10L32 8L39 9L44 9Z" fill="#f7b6cf" stroke="#c9a24f" stroke-width="1.5" stroke-linejoin="round"/></svg><div class="hand" style="font-size:20px">India 🇮🇳</div></div></div><p class="q">“Different countries, different skies, but one beautiful connection.”</p>
+<div class="pol"><div class="ph">🦋</div><div class="cap">butterfly days</div></div>
+<div class="pol"><div class="ph">🎀</div><div class="cap">tiny bows, big love</div></div>
+<div class="pearls" style="width:80%;margin:8px 0"></div>
+<div class="feat" id="ft" onclick="this.classList.toggle('show')">
+<span class="bw" style="top:-18px;left:-14px">🎀</span><span class="bw" style="top:-16px;right:-12px;font-size:30px">🦋</span><span class="bw" style="bottom:30px;right:-14px;font-size:26px">🤍</span>
+<img src="hand.jpg" alt="A little detail of my favourite person" onerror="miss(this)">
+<div class="cap">A little detail of my favourite person. Every little thing about you is special to me. ❤️</div>
+<div class="rv">Happy Birthday, my love. I wish I could be there beside you today. 🎀</div></div>
+<p class="hand" style="font-size:18px">tap the photo ♡</p>
+<button class="btn" onclick="go(3)">OPEN THE MAGAZINE ♡</button>
+</section>
+
+<!-- S3 magazine -->
+<section class="sc" id="s3">
+<button class="mg-ar" style="left:4px" onclick="mg(-1)">‹</button><button class="mg-ar" style="right:4px" onclick="mg(1)">›</button>
+<div class="mag" id="mag">
+<div class="pg cover"><div class="k">THE BIRTHDAY ISSUE · NOVEMBER 21</div><h1>JANA.</h1><div class="sub">THE GIRL WHO MAKES EVERYTHING BEAUTIFUL.</div><div style="font-size:50px;margin-top:20px">🎀</div><div class="hint">swipe →</div></div>
+<div class="pg"><div class="k">PAGE 1</div><h3>The Birthday Girl</h3><p>Some people enter a room loudly. Jana enters a life softly, and somehow everything begins to glow.</p><p>Today, the twenty-first of November, this whole issue belongs to her: to her smile, her calm, and the quiet magic she carries everywhere.</p><p style="font-size:40px">🌸</p></div>
+<div class="pg"><div class="k">PAGE 2</div><h3>Her Beautiful Qualities</h3><p><i>A gentle heart</i> that makes people feel safe.</p><p><i>A smile</i> that could brighten the longest day.</p><p><i>A graceful presence</i> that turns ordinary moments into something special.</p><p><i>A peaceful soul</i> who is lovely in the way she simply is.</p></div>
+<div class="pg"><div class="k">PAGE 3</div><h3>A Letter from Raj</h3><p style="font-family:var(--hand);font-size:24px;line-height:1.4">Jana,<br>Distance is only a number on a map. You are always close to my thoughts. I made this little world so that, even from far away, you could feel how much you matter to me. Today the whole day is yours. Smile a lot. You deserve it.<br>— Raj ❤️</p></div>
+<div class="pg"><div class="k">PAGE 4</div><h3>21 Reasons to Celebrate Her</h3><ol class="r"><li>Your smile.</li><li>Your kind heart.</li><li>Your gentle voice.</li><li>The calm you bring.</li><li>Your grace.</li><li>Your beautiful eyes.</li><li>The way you care.</li><li>Your sweetness.</li><li>Your strength.</li><li>Your sense of beauty.</li><li>Your laughter.</li><li>Your patience.</li><li>Your warmth.</li><li>Your quiet magic.</li><li>Your dreams.</li><li>Your softness.</li><li>Your light.</li><li>Your wonderful energy.</li><li>You make days brighter.</li><li>You are loved.</li><li>You were born today. 🎀</li></ol></div>
+<div class="pg" style="text-align:center;background:linear-gradient(#fff8f0,#fadde8)"><div class="k">PAGE 5</div><h3>A Little Birthday Wish</h3><div style="font-size:44px;margin:14px">🌷🌸🌷</div><p>May your year be soft, golden and full of reasons to smile.</p><p class="hand" style="font-size:30px;color:var(--g)">Happy Birthday, Jana ✨</p><button class="btn" onclick="go(4)">OPEN YOUR GIFT 🎁</button></div>
+</div></section>
+
+<!-- S4 gift -->
+<section class="sc" id="s4"><h2>🎁 The Mystery Gift ✨</h2><p class="hand" id="gh">tap the gift ♡</p>
+<div class="gift" id="gf" onclick="openGift()"><div class="bow">🎀</div><div class="lid"></div><div class="bx"></div><div class="rb rv1"></div><div class="rb rh"></div></div>
+<div class="rev" id="gm"><h2>MY BIGGEST WISH IS THAT LIFE GIVES YOU A MILLION REASONS TO SMILE.</h2><div class="sm" onclick="tiny(this)">🎁</div><p class="hand" id="gt">a tiny surprise inside… tap it</p><button class="btn" onclick="go(5)">TO THE CAKE 🎂</button></div></section>
+
+<!-- S5 cake -->
+<section class="sc" id="s5"><h2>🎂 The Birthday Cake 🕯️</h2><p class="hand" id="ch">tap the candles ♡</p>
+<div class="cake" id="ck" onclick="blow()"><svg viewBox="0 0 300 280">
+<ellipse cx="150" cy="262" rx="135" ry="14" fill="#e9d7c9"/><ellipse cx="150" cy="255" rx="130" ry="12" fill="#fff"/>
+<rect x="40" y="170" width="220" height="85" rx="14" fill="#f9c1d9"/><path d="M40 180Q60 215 80 180Q100 220 120 180Q140 222 160 180Q180 220 200 180Q220 222 240 180Q250 205 260 180V172H40Z" fill="#fff"/>
+<rect x="75" y="110" width="150" height="65" rx="12" fill="#f3a6c4"/><path d="M75 120Q95 150 115 120Q135 152 155 120Q175 152 195 120Q210 142 225 120V112H75Z" fill="#fff8f0"/>
+<g fill="#c9a24f"><circle cx="60" cy="238" r="5"/><circle cx="110" cy="242" r="5"/><circle cx="190" cy="242" r="5"/><circle cx="240" cy="238" r="5"/><circle cx="100" cy="160" r="4"/><circle cx="200" cy="160" r="4"/></g>
+<g font-size="16"><text x="70" y="212">🌸</text><text x="205" y="212">🌷</text><text x="130" y="232">🌸</text></g>
+<g id="cd"><rect x="105" y="72" width="10" height="40" rx="3" fill="#fff" stroke="#e8789f"/><rect x="145" y="64" width="10" height="48" rx="3" fill="#fff" stroke="#c9a24f"/><rect x="185" y="72" width="10" height="40" rx="3" fill="#fff" stroke="#e8789f"/>
+<g class="fl"><ellipse cx="110" cy="62" rx="6" ry="10" fill="#ffd36b"/><ellipse cx="150" cy="54" rx="6" ry="10" fill="#ffd36b"/><ellipse cx="190" cy="62" rx="6" ry="10" fill="#ffd36b"/></g></g></svg></div>
+<div class="rev" id="cm"><h2>HAPPY BIRTHDAY, MY PRINCESS JANA!</h2><button class="btn" onclick="go(8)">ONE LITTLE GAME 🎮</button></div></section>
+
+<section class="sc" id="s8"><h2>🎮 Catch My Heart 💗</h2><p class="sc2" id="gs">catch 12 hearts: 0 / 12</p><div class="glass" id="arena"></div><button class="btn" id="gb" onclick="game()">START ♡</button>
+<div class="rev" id="gw" style="margin:0 auto"><h2>You caught my heart. It was always yours. 🤍</h2><button class="btn" onclick="go(13)">ONE MORE GAME 🃏</button></div></section>
+<!-- S6 letter -->
+<section class="sc" id="s6"><h2>💌 The Final Love Letter 🌹</h2><p class="hand">tap the envelope ♡</p>
+<div class="env" id="ev" onclick="openLetter()"><div class="back"></div><div class="pin"></div><div class="front"></div><div class="flap"></div><div class="seal">♡</div></div></section>
+<div id="lt"><div class="paper" id="pp"><p>My dearest Jana,</p><p>Happy Birthday, my beautiful love. ❤️</p><p>Today is your special day, and I wish I could make every second of it magical for you.</p><p>I may not be beside you today, but I hope this little world reminds you how special you are to me.</p><p>I hope your days are filled with happiness, your heart stays peaceful, and your dreams slowly become reality.</p><p>You deserve beautiful things, wonderful memories and endless reasons to smile.</p><p>Thank you for being a special part of my story.</p><p>Happy Birthday, my princess.</p><p>Forever sending you love,</p><p>Raj ❤️</p><div style="text-align:center">🌸🌷🌸</div><button class="btn" onclick="closeLetter()">FOLD THE LETTER ♡</button></div></div>
+
+<!-- S7 -->
+<section class="sc" id="s7"><div class="fw">🌸🦋🌷</div><h1>MADE WITH LOVE, JUST FOR JANA.</h1><button class="btn" onclick="go(10)">ONE LAST QUESTION 💗</button><div class="e" id="e2">THE END? NO. OUR STORY CONTINUES... ♾️</div><button class="btn" id="rs" style="opacity:0" onclick="restart()">↻ RESTART THE MAGIC</button></section>
+
+<section class="sc" id="s13"><h2 style="font-family:Italiana,serif">🃏 Match the Pairs 🦋</h2><p class="hand" id="ms">find all 6 pairs</p><div id="mg" style="max-width:340px;margin:10px auto"></div><div class="rev" id="mw"><h2>Every pair matched, like us across the sky. 💞</h2><button class="btn" onclick="go(6)">READ YOUR LETTER 💌</button></div></section>
+<section class="sc" id="s10"><h2>Do you love me? 💗</h2><div class="face" id="fc">🥺</div><p class="hand" id="qt"></p>
+<div style="display:flex;gap:14px;justify-content:center;align-items:center;flex-wrap:wrap;min-height:90px"><button class="yes" id="yb" onclick="yes()">YES 💗</button><button class="no" id="nb" ontouchstart="nope(event)" onpointerenter="nope(event)" onclick="nope(event)">No 🙈</button></div></section>
+<div id="nl"></div>
+<section class="sc" id="s11"><div class="stars"></div><div class="nt" id="nightTitle">Happy Birthday, my princess 🎂✨<br><small style="font-size:18px;opacity:.8">A little surprise is waiting…</small></div><div id="glowProgress">TAP “REVEAL” TO READ YOUR FIRST MESSAGE</div><button class="btn" id="nextGlow" onclick="nextGlowLetter()">REVEAL A MESSAGE ✨</button><button class="btn" id="nc" style="display:none;position:absolute;bottom:90px;left:50%;transform:translateX(-50%);z-index:5" onclick="toCredits()">CONTINUE ✨</button></section>
+<section class="sc" id="s12"><div class="stars"></div><div class="cr" id="cr"><div class="big">Jana ♡</div><h3>A RAJ ORIGINAL</h3><h3>DIRECTED BY</h3><p>Raj 🎬</p><h3>STARRING</h3><p>Jana ✨<br>as The Main Character</p><h3>WRITTEN BY</h3><p>My Heart 💌</p><h3>PRODUCED BY</h3><p>Every Wish I Made Across The Sky</p><h3>FILMED IN</h3><p>India 🇮🇳 &amp; Egypt 🇪🇬<br>and everywhere in between</p><h3>MUSIC</h3><p>The song that makes me think of you 🎶</p><h3>SPECIAL THANKS</h3><p>Jana, for every smile 🦋<br>for being you 🌸</p><h3>NO HEARTS WERE HARMED</h3><p>(only completely stolen) 💗</p><div class="big">Happy Birthday, Jana 🎂</div><p>THE END? NO.<br>OUR STORY CONTINUES ♾️</p><div style="height:50vh"></div></div></section>
+<div id="pl" class="glass"><div class="eq"><i></i><i></i><i></i></div><button id="pp1" onclick="mp()" aria-label="Play">♪</button><button onclick="mu()" id="mb" aria-label="Mute">🔊</button><input type="range" id="pr" min="0" max="100" value="0" aria-label="Progress"><span id="msg">music</span></div>
+
+<script>
+var $=function(s){return document.querySelector(s)},$$=function(s){return document.querySelectorAll(s)};
+
+window.addEventListener('load',function(){setTimeout(function(){var l=$('#load');l.style.opacity=0;setTimeout(function(){l.remove()},600)},700)});
+/* floating hearts */
+var fxc=['💗','🦋','🤍','🎀','✨','🌸'];
+setInterval(function(){var f=$('#fx');if(document.hidden||f.children.length>16)return;var s=document.createElement('span');s.textContent=fxc[Math.random()*6|0];s.style.cssText='left:'+Math.random()*95+'%;font-size:'+(14+Math.random()*16)+'px;animation-duration:'+(8+Math.random()*6)+'s;--dx:'+(Math.random()*80-40)+'px;--r:'+(Math.random()*90-45)+'deg;opacity:.7';f.appendChild(s);setTimeout(function(){s.remove()},14000)},900);
+/* nav */
+function ding(){try{var c=new(window.AudioContext||window.webkitAudioContext)();[[0,261.6],[.35,392],[.35,523.3],[.35,659.3]].forEach(function(n){var o=c.createOscillator(),g=c.createGain();o.frequency.value=n[1];o.connect(g);g.connect(c.destination);var t=c.currentTime+n[0];g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(.2,t+.05);g.gain.exponentialRampToValueAtTime(.001,t+2.5);o.start(t);o.stop(t+2.6)})}catch(e){}}
+function intro(){var e=$('#s9');if(e.classList.contains('go'))return;e.classList.add('go');ding();if(!playing)mp();setTimeout(function(){e.style.transition='opacity 1s';e.style.opacity=0;setTimeout(function(){go(0);e.style.opacity=1},1000)},5000)}
+var gn=0,giv;
+function game(){clearInterval(giv);gn=0;$('#gb').style.display='none';$('#gw').classList.remove('show');$('#arena').innerHTML='';$('#gs').textContent='catch 12 hearts: 0 / 12';giv=setInterval(function(){if(!$('#s8').classList.contains('on')){clearInterval(giv);return}var a=$('#arena'),h=document.createElement('span');h.textContent=['💗','💖','💕','🦋'][Math.random()*4|0];h.style.left=Math.random()*(a.clientWidth-44)+'px';h.style.animationDuration=(2.6+Math.random()*2)+'s';h.onpointerdown=function(){if(h.dataset.d)return;h.dataset.d=1;h.style.transition='all .3s';h.style.transform='scale(2)';h.style.opacity=0;var r=h.getBoundingClientRect();confetti(r.left+20,r.top+20,10,['#f3a6c4','#ffd36b']);if(++gn>=12){clearInterval(giv);$('#gs').textContent='🎉 12 / 12!';$('#gw').classList.add('show');a.innerHTML=''}else $('#gs').textContent='catch 12 hearts: '+gn+' / 12'};a.appendChild(h);setTimeout(function(){h.remove()},5200)},650)}
+var Q=['🥺','😢','😠','😠','😡','😡','🤬','😤','👿','🥹'],QT=['Do you love me? 🥺','Are you really sure? 😟','Think again… do you love me? 😠','Say yes properly! 😠','I am getting angry now 😡','DO. YOU. LOVE. ME. 😡','Why is the No button so fast? 🤬','Last chances, princess 😤','Okay, I am VERY angry 👿','Final question… please? 🥹'],qi=0,nt=[];
+function quiz(){qi=0;var n=$('#nb');n.style.position='';n.style.left=n.style.top='';n.style.display='';$('#yb').style.fontSize='';$('#yb').style.padding='';qs()}
+function qs(){$('#fc').textContent=Q[qi];$('#fc').className='face'+(qi>=2&&qi<9?' ang':'');$('#qt').textContent=QT[qi]+'  ('+(qi+1)+'/10)';$('#yb').style.fontSize=(16+qi*5)+'px';$('#yb').style.padding=(12+qi*3)+'px '+(26+qi*5)+'px'}
+var lastN=0,yd=0;
+function nope(e){if(e&&e.preventDefault)e.preventDefault();var n=$('#nb'),t=Date.now();if(t-lastN>500){lastN=t;if(qi<9)qi++;qs();if(qi>=9)n.style.display='none'}n.style.position='fixed';n.style.left=(8+Math.random()*(innerWidth-110))+'px';n.style.top=(120+Math.random()*(innerHeight-300))+'px'}
+function yes(){if(yd)return;yd=1;$('#fc').className='face';$('#fc').textContent='🥰';$('#qt').textContent='I knew it, my love! 💗';var y=$('#yb');y.style.fontSize='';y.style.padding='';$('#nb').style.display='none';confetti(innerWidth/2,innerHeight/2,40,['#f3a6c4','#ffd36b','#fff']);setTimeout(function(){yd=0;night()},2400)}
+var ln=0,W=[
+'I love you my love 💗','I love you, Jana ✨','my princess 👑','forever yours ♾️',
+'you are my universe 🌌','my favourite person 🤍','Happy Birthday, Jana 🎂','I miss you 🥺💗',
+'my heart is yours 💌','you are my star 🌟','my sunshine ☀️','my beautiful girl 🌸',
+'distance means nothing 🌍','you make my world softer 🦋','my little universe 🎀','you are magic ✨',
+'my love, always 💞','a million reasons to smile 😊','you are my peace 🕊️','Jana ♡ Raj',
+'you deserve the world 🌹','my dream girl 💭','you glow brighter than stars 🌠','I am so proud of you 🥹',
+'every day is better with you 💕','my princess Jana 👸','my forever 💍','I adore you 🌷',
+'you are my favourite hello 💗','my heart, my Jana ❤️'
+];
+function spawn(x,y){
+  if(ln>=W.length)return;
+  var t=document.createElement('div');t.className='lt2';t.textContent=W[ln];
+  t.style.fontFamily=['Great Vibes','Parisienne','Dancing Script'][ln%3]+',cursive';
+  t.style.left='50%';t.style.top='50%';t.style.bottom='auto';
+  t.style.transform='translate(-50%,-50%) scale(.72)';
+  t.style.opacity='0';t.style.transition='opacity .65s ease,transform .8s cubic-bezier(.2,.8,.2,1)';
+  $('#nl').appendChild(t);
+  requestAnimationFrame(function(){t.style.opacity='1';t.style.transform='translate(-50%,-50%) scale(1)'});
+  return t;
+}
+var activeGlow=null;
+function nextGlowLetter(){
+  if(ln>=W.length){toCredits();return;}
+  if(activeGlow){activeGlow.style.opacity='0';activeGlow.style.transform='translate(-50%,-65%) scale(.85)';setTimeout(function(){if(activeGlow&&activeGlow.parentNode)activeGlow.remove();},450);activeGlow=null;}
+  activeGlow=spawn();ln++;
+  $('#glowProgress').textContent='MESSAGE '+ln+' OF '+W.length+'  ·  TAKE YOUR TIME ♡';
+  if(ln===W.length){
+    $('#nextGlow').textContent='CONTINUE TO THE NEXT SURPRISE ✨';
+    $('#glowProgress').textContent='MESSAGE 30 OF 30  ·  YOU READ THEM ALL ♡';
+  }else{
+    $('#nextGlow').textContent='NEXT MESSAGE  →';
+  }
+}
+function night(){
+  go(11);ln=0;activeGlow=null;
+  $('#nl').style.display='block';$('#nl').innerHTML='';
+  $('#nextGlow').style.display='block';$('#nextGlow').textContent='REVEAL A MESSAGE ✨';
+  $('#glowProgress').textContent='TAP “REVEAL” TO READ YOUR FIRST MESSAGE';
+  $('#nc').style.display='none';
+}
+function toCredits(){nt.forEach(function(t){clearInterval(t);clearTimeout(t)});nt=[];$('#nextGlow').style.display='none';$('#glowProgress').style.display='none';$('#nl').style.display='none';$('#nl').innerHTML='';go(12);var e=$('#cr');e.style.animation='none';e.offsetWidth;e.style.animation='';e.onanimationend=bye}
+function bye(){nt.forEach(function(t){clearInterval(t);clearTimeout(t)});var b=document.createElement('div');b.style.cssText='position:fixed;inset:0;z-index:35;background:#000;color:#ffd9ec;display:grid;place-items:center;font:44px Great Vibes,cursive;text-align:center;opacity:0;transition:opacity 2s';b.innerHTML='Happy Birthday,<br>my princess Jana 🌙<br><span style="font-size:26px;color:#ffd36b">forever yours, Raj ❤️</span>';document.body.appendChild(b);var fw=setInterval(function(){confetti(Math.random()*innerWidth,Math.random()*innerHeight*.6,34,['#ffd36b','#f3a6c4','#fff'])},650);setTimeout(function(){clearInterval(fw)},6500);setTimeout(function(){b.style.opacity=1;if(au){var v=setInterval(function(){au.volume=Math.max(0,au.volume-.1);if(au.volume<=0)clearInterval(v)},200)}},50);setTimeout(function(){try{window.close()}catch(e){}setTimeout(function(){location.replace('about:blank')},1200)},6500)}
+var MJ=[];
+function memory(){var a=['🦋','🎀','🌸','💗','👑','🌷'];a=a.concat(a).sort(function(){return Math.random()-.5});var g=$('#mg'),f=[],ok=0,locked=false;g.innerHTML='';$('#mw').classList.remove('show');$('#ms').textContent='find all 6 pairs';a.forEach(function(e){var c=document.createElement('div');c.className='card';c.innerHTML='<span>'+e+'</span>';c.onclick=function(){if(locked||c.classList.contains('up')||c.classList.contains('matched')||f.length>1)return;c.classList.add('up');f.push(c);if(f.length==2){if(f[0].textContent==f[1].textContent){f.forEach(function(x){x.classList.add('matched')});f=[];if(++ok==6){$('#ms').textContent='all found! 💞';confetti(innerWidth/2,innerHeight/2,40,['#f3a6c4','#ffd36b']);$('#mw').classList.add('show')}}else{locked=true;setTimeout(function(){f.forEach(function(x){x.classList.remove('up')});f=[];locked=false},850)}}};g.appendChild(c)})}
+function go(n){clearInterval(giv);if(n<10||n>12){nt.forEach(function(t){clearInterval(t);clearTimeout(t)});nt=[];$('#nl').style.display='none';$('#nl').innerHTML=''}if(n==10)quiz();if(n==13)memory();if(n==8){$('#gb').style.display='block'}$$('.sc').forEach(function(e){e.classList.remove('on')});var s=$('#s'+n);s.classList.add('on');s.scrollTop=0;clearTimeout(tm);if(n==1)story(0);if(n==7)finale();if(n==3)$('#mag').scrollLeft=0}
+function openWorld(){$('#s0').classList.add('burst');confetti(innerWidth/2,innerHeight/3,18,['#f3a6c4','#c9a24f','#fff']);setTimeout(function(){go(1)},1100)}
+/* stories */
+var ST=[['🌍','Today, the world became a little more beautiful.','linear-gradient(160deg,#f8b4d0,#e98bb4)'],['🎂','Because someone incredibly special was born.','linear-gradient(160deg,#f3b0cf,#c9a7ee)'],['🌟','Someone who deserves endless happiness.','linear-gradient(160deg,#ffd7b8,#f39ac0)'],['🎀','Someone who makes ordinary moments feel special.','linear-gradient(160deg,#e9a8d8,#f6bdd3)'],['🦋','Someone whose smile deserves its own universe.','linear-gradient(160deg,#c9b2ee,#f5a8c8)'],['💞','Someone very far away, yet so close to my heart.','linear-gradient(160deg,#f6a6be,#e3b27a)'],['👑','HAPPY BIRTHDAY, MY BEAUTIFUL JANA! ❤️','linear-gradient(160deg,#ee7fae,#d4a24c)']],si=0,tm;
+function story(i){clearTimeout(tm);if(i<0)i=0;if(i>6){go(2);return}si=i;var b='';for(var k=0;k<7;k++)b+='<i class="'+(k<i?'d':k==i?'a':'')+'"><b></b></i>';$('#bars').innerHTML=b;var s=$('#st');s.style.background=ST[i][2];$('#stk').textContent=ST[i][0];var t=$('#stt');t.textContent=ST[i][1];t.style.animation='none';t.offsetWidth;t.style.animation='';$('#sbtn').style.display=i==6?'block':'none';if(i==6)confetti(innerWidth/2,innerHeight/2,40,['#fff','#ffd36b','#f3a6c4']);else tm=setTimeout(function(){story(i+1)},9000)}
+function stp(d){clearTimeout(tm);story(si+d)}
+/* photo */
+function miss(im){var d=document.createElement('div');d.className='miss';d.innerHTML='Add <b>hand.jpg</b> next to index.html.<br><br><label class="btn" style="display:inline-block;margin:0">Or choose photo<input type="file" accept="image/*" hidden></label>';im.replaceWith(d);d.querySelector('input').onchange=function(e){var f=e.target.files[0];if(!f)return;var n=document.createElement('img');n.src=URL.createObjectURL(f);n.style.cssText='display:block;width:100%;height:auto';d.replaceWith(n)};d.querySelector('label').onclick=function(e){e.stopPropagation()}}
+/* magazine */
+function mg(d){var m=$('#mag');m.scrollBy({left:d*m.clientWidth,behavior:'smooth'})}
+/* gift */
+function openGift(){var g=$('#gf');if(g.classList.contains('open'))return;g.classList.add('open');$('#gh').textContent='';var r=g.getBoundingClientRect();setTimeout(function(){for(var i=0;i<14;i++)(function(i){setTimeout(function(){var s=document.createElement('span');s.textContent=['🦋','💗','✨','🎀'][i%4];var x=r.left+r.width/2,y=r.top+30;s.style.cssText='position:fixed;z-index:35;font-size:26px;left:'+x+'px;top:'+y+'px;transition:all 2.4s ease-out;pointer-events:none';document.body.appendChild(s);requestAnimationFrame(function(){s.style.transform='translate('+(Math.random()*240-120)+'px,'+(-80-Math.random()*220)+'px) rotate('+(Math.random()*60-30)+'deg)';s.style.opacity=0});setTimeout(function(){s.remove()},2500)},i*110)})(i)},700);setTimeout(function(){$('#gm').classList.add('show')},1600)}
+function tiny(e){e.textContent='💌';$('#gt').textContent='A tiny promise: a very long hug, waiting for you. 🤍';confetti(innerWidth/2,innerHeight/2,25,['#f3a6c4','#c9a24f'])}
+/* cake */
+function blow(){var c=$('#ck');if(c.classList.contains('off'))return;c.classList.add('off');$('#ch').textContent='';var q=0,iv=setInterval(function(){confetti(Math.random()*innerWidth,Math.random()*innerHeight*.5,30,['#ffd36b','#f3a6c4','#fff','#c9a24f']);if(++q>5)clearInterval(iv)},450);confetti(innerWidth/2,innerHeight/2,60,['#ffd36b','#c9a24f','#fff']);setTimeout(function(){$('#cm').classList.add('show')},700)}
+/* letter */
+function openLetter(){var e=$('#ev');if(e.classList.contains('open'))return;e.classList.add('open');setTimeout(function(){var l=$('#lt');l.classList.add('on');l.scrollTop=0;var p=$('#pp');p.style.animation='none';p.offsetWidth;p.style.animation=''},1100)}
+function closeLetter(){$('#lt').classList.remove('on');setTimeout(function(){go(7)},300)}
+/* finale */
+function finale(){var e=$('#e2'),r=$('#rs'),n=0;e.classList.remove('show');r.style.opacity=0;setTimeout(function(){e.classList.add('show')},3500);setTimeout(function(){r.style.opacity=1},6000);var iv=setInterval(function(){if(!$('#s7').classList.contains('on')){clearInterval(iv);return}confetti(Math.random()*innerWidth,Math.random()*innerHeight*.6,26,['#ffd36b','#fff','#f3a6c4','#e8a598'])},900)}
+function restart(){ln=0;activeGlow=null;$('#nextGlow').style.display='block';$('#glowProgress').style.display='block';$('#s9').classList.remove('go');$('#s0').classList.remove('burst');$('#gf').classList.remove('open');$('#gm').classList.remove('show');$('#gh').textContent='tap the gift ♡';$('#ck').classList.remove('off');$('#cm').classList.remove('show');$('#ch').textContent='tap the candles ♡';$('#ev').classList.remove('open');$('#ft').classList.remove('show');go(0)}
+/* confetti / fireworks */
+var cv=$('#cv'),cx=cv.getContext('2d'),P=[],run=0;
+function sz(){cv.width=innerWidth;cv.height=innerHeight}sz();addEventListener('resize',sz);
+function confetti(x,y,n,cols){for(var i=0;i<n;i++){var a=Math.random()*6.28,v=2+Math.random()*5;P.push({x:x,y:y,vx:Math.cos(a)*v,vy:Math.sin(a)*v-2,c:cols[i%cols.length],l:70+Math.random()*40,s:2+Math.random()*3})}if(!run){run=1;loop()}}
+function loop(){cx.clearRect(0,0,cv.width,cv.height);P=P.filter(function(p){return p.l>0});P.forEach(function(p){p.x+=p.vx;p.y+=p.vy;p.vy+=.08;p.vx*=.985;p.l--;cx.globalAlpha=Math.min(1,p.l/30);cx.fillStyle=p.c;cx.fillRect(p.x,p.y,p.s,p.s*1.6)});if(P.length)requestAnimationFrame(loop);else run=0}
+/* music */
+var au=null,playing=false;
+function mp(){if(!au){au=new Audio('music.mp3');au.loop=true;au.onerror=function(){$('#msg').textContent='music.mp3 not found';playing=false;$('#pp1').textContent='♪';$('#pl').classList.remove('play')};au.onended=function(){playing=false;$('#pp1').textContent='♪';$('#pl').classList.remove('play')};au.ontimeupdate=function(){if(au.duration)$('#pr').value=au.currentTime/au.duration*100};$('#pr').oninput=function(){if(au&&au.duration)au.currentTime=this.value/100*au.duration}}
+if(playing){au.pause();playing=false;$('#pp1').textContent='♪';$('#pl').classList.remove('play')}else{var p=au.play();if(p&&p.catch)p.catch(function(){$('#msg').textContent='Tap play to start music';playing=false;$('#pp1').textContent='♪';$('#pl').classList.remove('play')});else{playing=true;$('#pp1').textContent='❚❚';$('#pl').classList.add('play');$('#msg').textContent='music'}}}
+function mu(){if(!au)return;au.muted=!au.muted;$('#mb').textContent=au.muted?'🔇':'🔊'}
+</script></body></html>
